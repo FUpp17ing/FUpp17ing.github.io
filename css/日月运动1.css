@@ -1,0 +1,147 @@
+#solar-system {
+    position: relative;
+    width: 50%;
+    /* 原 400px * 3 */
+    height: 600px;
+    /* 原 400px * 3 */
+}
+
+#sun {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 240px;
+    /* 原 80px * 3 */
+    height: 240px;
+    /* 原 80px * 3 */
+    /* background-image: url("太阳.png");
+    background-size: cover; */
+    border-radius: 50%;
+    box-shadow: 0 0 60px 30px rgba(255, 215, 0, 0.4), 0 0 100px 60px rgba(255, 215, 0, 0.2), 0 0 140px 90px rgba(255, 215, 0, 0.1);
+    /* 原阴影值 * 3 */
+}
+
+#earth-orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    /* 原 300px * 3 */
+    height: 400px;
+    /* 原 300px * 3 */
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
+
+#earth {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -45px;
+    /* 原 -15px * 3 */
+    margin-left: -45px;
+    /* 原 -15px * 3 */
+    width: 90px;
+    /* 原 30px * 3 */
+    height: 90px;
+    /* 原 30px * 3 */
+    background-image: url("../img/算法/地球.png");
+    border-radius: 50%;
+    animation: earth-orbit 10s linear infinite;
+}
+
+#moon-orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 210px;
+    /* 原 70px * 3 */
+    height: 210px;
+    /* 原 70px * 3 */
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
+
+#moon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -15px;
+    /* 原 -5px * 3 */
+    margin-left: -15px;
+    /* 原 -5px * 3 */
+    width: 45px;
+    /* 原 10px * 3 */
+    height: 45px;
+    /* 原 10px * 3 */
+    background-image: url("../img/算法/月亮.png");
+    border-radius: 50%;
+    animation: moon-orbit 2s linear infinite;
+}
+
+@keyframes earth-orbit {
+    from {
+        transform: rotate(0deg) translateX(270px) rotate(0deg);
+        /* 原 150px * 3 */
+    }
+
+    to {
+        transform: rotate(360deg) translateX(270px) rotate(-360deg);
+        /* 原 150px * 3 */
+    }
+}
+
+@keyframes moon-orbit {
+    from {
+        transform: rotate(0deg) translateX(90px) rotate(0deg);
+        /* 原 35px * 3 */
+    }
+
+    to {
+        transform: rotate(360deg) translateX(90px) rotate(-360deg);
+        /* 原 35px * 3 */
+    }
+}
+
+.nc-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.image-slider {
+    max-width: 100%;
+    max-height: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+.image-slider::-webkit-scrollbar {
+    height: 10px;
+}
+
+.image-slider::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.image-slider::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+.image-slider::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.image-slider img {
+    height: 100%;
+}

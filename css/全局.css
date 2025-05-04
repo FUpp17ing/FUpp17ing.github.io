@@ -1,0 +1,37 @@
+@font-face {
+	font-family: "字库星球飞扬体";
+	src: url('../css/font/ZiKuXingQiuFeiYangTi-2.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: "方正楷体";
+	src: url('../css/font/FangZhengKaiTiJianTi-1.ttf') format('truetype');
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Microsoft YaHei', sans-serif;
+}
+
+.loading{
+	position: fixed;
+	left:50%;
+	top:45%;
+	background-color: #A14F4E;
+	width: 40px;
+	height: 40px;
+	transform: scale(60);
+	opacity: 1;
+	border-radius: 50%;
+	z-index: 100000;
+	transition: all 2s;
+}
+
+.loading-out{
+	transform: scale(0.1);
+}

@@ -1,0 +1,663 @@
+body {
+	margin: 0;
+	background-image: url('../img/工具页插画/蓝色底图.png');
+	background-attachment: fixed;
+	overflow-x: hidden;
+	
+}
+
+.chap{
+	min-height: 50vh;
+	margin-bottom: 40vh;
+}
+
+/* ================ 八卦图与青铜器 ================== */
+
+
+.container-window{
+	position: relative;
+	margin: 5vh auto;
+	width: 90vw;
+	height: 90vh;
+	border-radius: 50px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	container-type: size;
+}
+
+.container-window::after{
+	content: '';
+	width: 90vw;
+	height: 90vh;
+	border-radius: 50px;
+	background: rgba(43, 66, 81, 0.5);
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: -10;
+}
+
+.rotater {
+	position: relative;
+	width: 600px;
+	height: 600px;
+	transition: all 0.5s ease;
+	scale: 1.3;
+	transform: translateY(-30px);
+}
+
+.main-image {
+	position: absolute;
+	width: 300px;
+	height: 300px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+	object-fit: cover;
+	z-index: 1;
+	transition: all 0.5s ease;
+}
+
+.card {
+	position: absolute;
+	width: 200px;
+	height: 240px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0.7;
+	transition: all 0.3s ease;
+	cursor: pointer;
+	z-index: 10;
+}
+
+.card:hover {
+	opacity: 1;
+}
+
+.card.active {
+	opacity: 1;
+	scale: 1.2;
+}
+
+.card img {
+	width: 80px;
+	height: 100px;
+	object-fit: cover;
+	z-index: 40;
+}
+
+.description {
+	position: absolute;
+	width: 860px;
+	padding: 30px 50px;
+	background-color: #0e3242;
+	border-radius: 50px;
+	border: 4px solid #797466;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	z-index: -1;
+	left: calc(50% - 400px);
+	top: 10px;
+	/* 文字表示部分 */
+	color: #fff;
+	font-size: 20px;
+	text-indent: 2em;
+	p{
+		margin: 0;
+	}
+}
+
+.description:before{
+	position: absolute;
+	bottom: calc(50% - 30px);
+	left: -30px;
+	content: '';
+	font-size: 60px;
+	width: 60px;
+	height: 60px;
+	border-radius: 30px;
+	background-color: #797466;	
+}
+
+.description:after{
+	position: absolute;
+	bottom: calc(50% - 30px);
+	right: -30px;
+	content: '';
+	font-size: 60px;
+	width: 60px;
+	height: 60px;
+	border-radius: 30px;
+	background-color: #797466;	
+}
+
+/* 背景大字体相关 */
+#divice-title{
+	position: absolute;
+	max-width: 80%;
+	font-family: '字库星球飞扬体';
+	color: #fff;
+	opacity: 0.3;
+	font-size: 13vw;
+	z-index: -1;
+	.zoomed{
+		scale: 2.7;
+		top: 600px;
+	}
+}
+
+
+#divice-title-sub{
+	position: absolute;
+	font-family: '字库星球飞扬体';
+	color: #fff;
+	opacity: 1;
+	font-size: 40px;
+	bottom:50px;
+	z-index: 10;
+}
+
+.zoom-control {
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 8px 16px;
+	background: #00aaff;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	z-index: 10;
+	display: none;
+}
+
+.zoom-control:hover {
+	background: #0e7aff;
+}
+
+.zoomed{
+	scale: 3;
+	top: 600px;
+}
+
+
+/* ==================================== 滚动动画 ==================================== */
+
+.scoll-anim{
+	position: relative;
+	height: 300px;
+	.sun{
+		position: absolute;
+		img{
+			width:500px;
+		}
+	}
+	.anim-trigger{
+		position: absolute;
+		height: 1px;
+		width: 100%;
+		top:80vh;
+	}
+}
+
+.birds{
+	position: relative;
+	.bird{
+		position: absolute;
+		width: 13vw;
+		transition: all 5s ease;
+		z-index: 5;
+	}
+}
+/* 位置调整 */
+.bird:nth-of-type(1){top:300px;left:0;}
+.bird:nth-of-type(2){top:300px;left:20vw;}
+.bird:nth-of-type(3){top:100px;left:30vw;}
+.bird:nth-of-type(4){top:130px;right:37vw;}
+.bird:nth-of-type(5){top:200px;right:20vw;}
+.bird:nth-of-type(6){top:300px;right:-3vw;}
+
+
+.animation-active .bird:nth-of-type(1){top:300px;left:-100vw;}
+.animation-active .bird:nth-of-type(2){top:300px;left:-60vw;}
+.animation-active .bird:nth-of-type(3){top:100px;left:-40vw;}
+.animation-active .bird:nth-of-type(4){top:130px;right:-40vw;}
+.animation-active .bird:nth-of-type(5){top:200px;right:-60vw;}
+.animation-active .bird:nth-of-type(6){top:300px;right:-100vw;}
+
+.clouds{
+	position: relative;
+	.cloud{
+		width: 100%;
+		position: absolute;
+		transition: all 5s ease 0.5s;
+	}
+}
+.cloud:nth-of-type(1){top:100px;left:0}
+.cloud:nth-of-type(2){top:0px;left:0}
+.cloud:nth-of-type(3){top:0px;right:0}
+.cloud:nth-of-type(4){top:0px;right:0}
+
+
+.animation-active .cloud:nth-of-type(1){top:100px;left:-300vw}
+.animation-active .cloud:nth-of-type(2){top:0px;left:-200vw}
+.animation-active .cloud:nth-of-type(3){top:0px;right:-200vw}
+.animation-active .cloud:nth-of-type(4){top:0px;right:-300vw}
+
+
+/* ===================================== 影子 ===================================== */
+
+.part-shadow{
+	margin: 0 7vw;
+	display: flex;
+	justify-content: space-between;
+	.left{
+		flex: 2;
+		.shadow-container{
+			position: relative;
+			overflow: hidden;
+			width: 50vw;
+		}
+		.pic{
+			width: 100%;
+			opacity: 0;
+			z-index: 3;
+			transition: opacity 1s;
+			img{
+				width: 100%;
+			}
+		}
+		.text{
+			color: #e6e2cf;
+			position: absolute;
+			font-family: '方正楷体';
+			z-index: -1;
+			top:0;
+			left: 0;
+			padding: 20px;
+		}
+		.text1{
+			font-size: 40px;
+			font-weight: 600;
+			margin-bottom: 30px;
+		}
+		.text2{
+			font-size: 30px;
+			opacity: 0.7;
+		}
+		
+		
+	}
+	.right{
+		flex: 1;
+		transform: translateY(130px);
+		p{
+			font-family: "字库星球飞扬体";
+			color: #D1BFA1;
+			font-size: 30px;
+			margin: 20px;
+		}
+		p#shadow-right-tip{
+			color: #9B4139;
+			background-color: #D1BFA1;
+			border-radius: 10px;
+			width: 80%;
+			opacity: 0;
+			transition: opacity 0.4s;
+			font-size: 25px;
+			text-align: center;
+		}
+		.pics{
+			display: flex;
+			flex-wrap: wrap;
+			gap:1vw 2vw;
+			img{
+				width: 40%;
+				border-radius: 10%;
+				transition: transform 0.3s;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			}
+			img:hover{
+				transform: translateY(-10px);
+			}
+			img.active{
+				box-shadow: 0 4px 20px rgba(255, 255, 255, 0.5);
+			}
+		}
+	}
+}
+
+/* ====================== 立杆测影与勾股术补充 ================== */
+.part-shadow-sub{
+	margin-left: 10vw;
+	.title{
+		font-size: 80px;
+		opacity: 0.7;
+	}
+	.container{
+		width: 80vw;
+		min-height: 300px;
+		display: flex;
+		justify-content: space-between;
+		gap: 5vw;
+		.sub-title{
+			position: relative;
+			font-family: "方正楷体";
+			font-size: 40px;
+			font-weight: 600;
+			margin-bottom: 50px;
+			text-indent: 0;
+			cursor: pointer;
+			transition: color 0.5s;
+		}
+		
+		
+		
+		.part{
+			background-color: #dac6a3;
+			padding: 30px;
+			font-size: 20px;
+			text-indent: 2em;
+			border-radius: 30px;
+			opacity: 0.8;
+			box-shadow: 0px 4px 8px 8px rgba(0,0,0,0.1);
+			img{
+				width: 100%;
+			}
+		}
+		.part:nth-child(1){flex: 1;}
+		.part:nth-child(2){
+			flex: 2;
+			p:nth-child(1){
+				font-size: 30px;
+			}
+		}
+	}
+}
+
+
+/* 悬停下划线动画 */
+.part .sub-title::after {
+	content: '';
+	position: absolute;
+	bottom: -5px;
+	left: 0px;
+	width: calc(100% - 40px);
+	height: 3px;
+	background: #000;
+	transform: scaleX(0);
+	transform-origin: right;
+	transition: transform 0.3s ease;
+}
+
+.part:hover .sub-title::after {
+	transform: scaleX(1);
+	transform-origin: left;
+}
+
+/* ======================= 割圆术 =============================== */
+.geyuanshu{
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	margin: 10vw 10vh;
+	gap:5vw;
+	.container{
+		flex: 2;
+		border-radius: 30px;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		height: 70vh;
+		img{
+			width: 100%;
+		}
+	}
+	p{
+		position: absolute;
+		bottom: -50px;
+		font-size: 30px;
+		font-family: '方正楷体';
+		font-weight: 600;
+		color:#D7CAA8;
+	}
+	.info{
+		flex: 1;
+		font-size: 30px;
+	}
+}
+
+/* ====================== 招差术与调日法 ===================  */
+
+.title{
+	font-family: '字库星球飞扬体';
+	font-size: 100px;
+	color: black;
+}
+
+.intruduction{
+	margin-top: 40px;
+	font-size: 25px;
+	border-radius: 50px;
+	padding: 30px;
+	max-width: 40vw;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.zhaochashu{
+	margin-left: 150px;
+	margin-bottom: 200px;
+	position: relative;
+
+	.left{
+		padding-top: 100px;
+		img{
+			position: absolute;
+			height: 600px;
+			top: 0px;
+			scale: 2;
+			z-index: -1;
+			opacity: 0.8;
+		}
+		.intruduction{
+			background: linear-gradient(70deg, rgba(255,255,255,0.5), rgba(255,255,255,0));;
+		}
+	}
+	.right{
+		.carousel{
+			position: absolute;
+			right:150px;
+			top:200px;
+			border-radius: 30px;
+			overflow: hidden;
+			z-index: 1;
+			img{
+				height: 80%;
+				position: relative;
+				left:0px;
+				top:50px;
+			}
+		}
+		img{
+			position: absolute;
+			right:-100px;
+			top:100px;
+			height: 800px;
+			z-index: 3;
+		}
+	}
+}
+
+.diaorifa{
+	height: 800px;
+	position: relative;
+	.left{
+		img{
+			position: absolute;
+			right:20vw;
+			height: 800px;
+		}
+	}
+	.right{
+		position: absolute;
+		top:150px;
+		right: 150px;
+		.intruduction{
+			width: 500px;
+		}
+	}
+}
+
+/* ======================= 结语 ========================= */
+.end{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 100px;
+	.scroll-container{
+		height: auto;
+		position: relative;
+	}
+	.aboutus {
+		cursor: pointer;
+		padding-top: 40px;
+		text-align: center;
+		width: 330px;
+		height: 300px;
+		background-color: antiquewhite;
+		/* background: url('https://img.freepik.com/free-vector/vintage-paper-texture_1194-6500.jpg') repeat-x; */
+		background:url("../img/工具页插画/卷轴内.png");
+		background-size: auto 100%;
+		transition: all 0.5s ease;
+		box-shadow: 0 2px 5px rgba(0, 0, 10px, 0.2);
+		z-index: 1;
+		overflow: hidden;
+	}
+
+	.left, .right {
+		z-index: 3;
+		position: absolute;
+		background-size: contain;
+		top: 0;
+		width: 52px;
+		height: 100%;
+		transform: translateY(-10%);
+		transition: all 0.5s ease;
+		img{
+			height: 120%;
+			width: 100%;
+		}
+	}
+
+	.left {
+		left: -45px;
+	}
+
+	.right {
+		right: -45px;
+	}
+	
+}
+
+.scroll-container:hover .aboutus {
+	width: 600px;
+}
+
+.aboutus .initial-text {
+	font-family: '字库星球飞扬体';
+	font-size: 40px;
+	line-height: 300px;
+	writing-mode: vertical-lr;
+	transition: all 0.3s ease;
+}
+
+.aboutus .expanded-content {
+	font-family: "方正楷体";
+	font-weight: 800;
+	width: 100%;
+	opacity: 0;
+	position: relative;
+	top:-120px;
+	transform: scale(0.8);
+	transition: all 0.3s ease;
+	font-size: 30px;
+	color: #5a3921;
+	line-height: 1.5;
+}
+
+.scroll-container:hover .aboutus .initial-text {
+	opacity: 0;
+	transform: scale(0.2);
+}
+
+.scroll-container:hover .aboutus .expanded-content {
+	opacity: 1;
+	transform: scale(1);
+	transform: translateY(-100px);
+}
+
+/* 媒体响应 */
+@media screen and (max-height: 790px){
+	.description{
+		scale: 0.9;
+		padding: 10px 30px;
+	}
+	.zoomed{
+		scale: 2.8;
+		top: 600px;
+	}
+}
+
+@media screen and (max-width: 1620px){
+	.title{
+		font-size: 80px;
+	}
+	.part-shadow{
+		.text1{
+			font-size: 24px;
+			margin-bottom: 25px;
+		}
+		.text2{
+			font-size: 18px;
+		}
+	}
+	.geyuanshu{
+		.info{
+			flex: 1;
+			font-size: 25px;
+		}
+	}
+	.zhaochashu .right .carousel{
+		scale: 0.9;
+		right:0px;
+		img{
+			height: 80%;
+			position: relative;
+			left:0px;
+			top:50px;
+		}
+	}
+	.intruduction{
+		padding: 20px;
+	}
+}
+
+@media screen and (max-width:1340px) {
+	.geyuanshu{
+		flex-direction: column-reverse;
+		align-items: center;
+		.container{
+			max-height: 80vh;
+			width: 90%;
+			img{
+				overflow: hidden;
+				min-height: 0;
+			}
+		}
+	}
+}

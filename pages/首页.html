@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>天玑谱 首页</title>
+		<!-- 色卡 -->
+		<!-- #9f492d #026399 #e6e2cf #151614 -->
+		<link rel="stylesheet" href="../css/首页.css" />
+		<link rel="stylesheet" href="../css/全局.css" />
+		<link rel="stylesheet" href="../css/导航栏-蓝.css" />
+	</head>
+	<!-- 
+	 功能：
+	 1. 鼠标在页面拖拽时，转盘和卡片跟随旋转，旋转会吸附到card上，并记录当前card的一个索引值，使上方的card进入active状态。
+	 2. 每个card正常情况下透明度为0.7，鼠标悬浮或进入active状态时透明度为1
+	 3. 点击非active状态的card会使其进入active状态，转盘自动旋转使该卡片处于正上方
+	 4. 点击处于active状态的card会执行操作
+	 5. 有一个描述框，会跟随当前处于active状态的card而改变其内容
+	 6. 有一对切换按钮可以实现active状态转移到当前active卡片的左边或右边的卡片
+	 7. 当第一个或第四个card处于active状态时，不可再向没有卡片的方向进行拖拽或按钮切换操作
+	 -->
+	<body style="background-image: url('../img/首页/首页底图2.png')">
+		
+		<!-- 跳转动画 -->
+		<div class="loading"></div>
+		
+		<!-- 顶部感应区域，用于控制导航栏自动隐藏 -->
+		<div class="top-trigger"></div>
+		<!-- 导航栏 -->	
+		<nav class="navbar">
+		    <div class="logo">天玑谱</div>
+		    <ul class="nav-links">
+		        <li><a onclick="loading.in('../pages/首页.html')">首页</a></li>
+		        <li><a onclick="loading.in('../算法/算法.html')">算筹</a></li>
+		        <li><a onclick="loading.in('../pages/工具页.html')">观象</a></li>
+		        <li><a onclick="loading.in('../pages/人物.html')">问道</a></li>
+		        <li><a onclick="loading.in('../pages/书籍.html')">典藏</a></li>
+		    </ul>
+		</nav>
+		<div id="title">观象·天工开物 <br>圭表浑仪载乾坤</div>
+		<div id="tipbar">点击进入对应章节</div>
+		<button id="prevBtn" class="pageButton"><img src="../img/首页/箭头.png" alt="" /></button>
+		<button id="nextBun" class="pageButton"><img src="../img/首页/箭头.png" alt="" /></button>
+		<div id="container" >
+			
+			<div id="rotate" class="rotater">
+				<div class="card sub" >
+					<img src="../img/首页/星宿6.png" alt="" />
+				</div>
+				<div class="card main" data-index='0'  data-loc="北" alt="" data-angle="-60"
+				data-simple="算筹·历法玄机<br>星移斗转皆成算"
+				data-content="此章为历法基础算法，千年观天，浩渺星河皆化玄机妙法。"
+				data-detail="先贤以数理织就星河轨迹。从“上元积年”的时空原点，到“祖冲之闰法”的日月协奏，再到“二十四节气”的农耕智慧，皆以算筹为笔，写就宇宙的恒常与变易。内插之法三次推演，勾勒日月盈仄；定朔定气弃虚求实，令四时更迭与天象同频......此章非止陈列古术，更可执虚拟算筹，亲身计算触碰算法精魂。"
+				data-herf="../算法/算法.html"
+				>
+					<img src="../img/首页/北玄武 1算法.png" />
+				</div>
+				<div class="card sub">
+					<img src="../img/首页/星宿5.png" alt="" />
+				</div>
+				<div class="card main active" data-index='1' data-loc="东" data-angle="0"
+				data-simple="观象·天工开物<br>圭表浑仪载乾坤"
+				data-content="此章陈列先贤观天工具，一器一术皆藏造化。"
+				data-detail="圭表丈量日升月恒，浑仪转译天河密语。如今的北京古观象台上陈列着八架清制铜铸天文仪器原件，大器无声，向我们诉说着古天文家的宇宙模型；圭表测影与勾股术、弧矢割圆与黄赤换算，招差术与调日法，以数学奇招解天体之谜。查阅此章可感受张衡“璇玑玉衡，以齐七政”之妙。"
+				data-herf="../pages/工具页.html"
+				>
+					<img src="../img/首页/东青龙 2工具.png" alt="" />
+				</div>
+				<div class="card sub">
+					<img src="../img/首页/星宿3.png" alt="" />
+				</div>
+				<div class="card main" data-index='2'  data-loc="南" data-angle="60"
+				data-simple="问道·星官列传<br>‌群贤列宿耀长空"
+				data-content="此间星光汇聚，映照历代天学宗师，将华夏天文算法推向一个又一个高峰。"
+				data-detail="战国甘德编制古老星表，汉代张衡提出“浑天说”，祖冲之首次引入岁差修正，僧一行实测子午线长度，他们以严谨的态度、创新的思维，不断拓展天文学的边界，成为人类探索宇宙征程中不朽的丰碑。"
+				data-herf="../pages/人物.html"
+				>
+					<img src="../img/首页/南朱雀 3人物.png"alt="" />
+				</div>
+				<div class="card sub">
+					<img src="../img/首页/星宿2.png" alt="" />
+				</div>
+				<div class="card main" data-index='3' data-loc="西" data-angle="120"
+				data-simple="典藏·典籍撷英<br>汗青留痕照古今"
+				data-content="此章为天文典籍介绍，竹简泛黄处，藏《尧典》定历之始；绢帛生辉时，见《太初》首纳节气。"
+				data-detail="古代天文典籍或凝星辉为历法，或化农时为诗行，或执算筹破天穹，共同书写了华夏文明“究天人之际”的千年史诗，他们共同组成了可触可感的中华民族“问天”征程。"
+				data-herf="../pages/书籍.html"
+				>
+					<img src="../img/首页/西白虎 4书籍.png"  alt="" />
+				</div>
+				<div class="card sub">
+					<img src="../img/首页/星宿4.png" alt="" />
+				</div>
+				
+				<div class="steel">
+					<img src="../img/首页/星盘.png" alt="星盘未加载" />
+				</div>
+			</div>
+			<div id="introduction">
+				<p id="desc1">此章陈列先贤观天工具，一器一术皆藏造化。</p>
+				<p id="desc2">圭表丈量日升月恒，浑仪转译天河密语。如今的北京古观象台上陈列着八架清制铜铸天文仪器原件，大器无声，向我们诉说着古天文家的宇宙模型；圭表测影与勾股术、弧矢割圆与黄赤换算，招差术与调日法，以数学奇招解天体之谜。查阅此章可感受张衡“璇玑玉衡，以齐七政”之妙。</p>
+			</div>
+			<div id="loc">东</div>
+		</div>
+		
+	</body>
+</html>
+<script src="../js/navbar.js"></script>
+<script src='../js/loading.js'></script>
+<script>
+	// ====================== 旋转控制部分 ==========================
+	const cards = document.querySelectorAll(".main");
+	const rotater = document.querySelector('#rotate');
+	//信息更新
+	const introduction = document.getElementById('introduction');
+	const simple = document.querySelector("#desc1");
+	const detail = document.querySelector("#desc2");
+	const title = document.getElementById("title");
+	const loc = document.getElementById('loc');
+	const tip = document.getElementById('tipbar');
+	//按钮
+	const prevbtn = document.getElementById("prevBtn");
+	const nextbtn = document.getElementById("nextBun");
+
+	
+	let activeIndex = 1;
+	let activeCard = null;
+	
+	// 激活卡片
+	function activateCard(card) {
+	    // 移除之前激活的卡片
+	    if (activeCard) {
+	        activeCard.classList.remove('active');
+	    }
+	    
+	    // 设置新激活的卡片
+	    activeCard = card;
+	    card.classList.add('active');
+	    
+	    // 更新描述
+		title.innerHTML = card.dataset.simple;
+		loc.textContent = card.dataset.loc;
+		activeIndex = Number(card.dataset.index);
+		
+		//计算角度
+		const angle = parseFloat(card.dataset.angle);
+		
+		// 旋转容器使当前卡片位于正上方
+		const rotation = -angle;
+		rotater.style.transform = `rotate(${rotation}deg)`;
+		
+		updateBtn();
+	}
+	
+	//更新按钮状态
+	function updateBtn(){
+		// 根据索引设置按钮可用性
+		if (activeIndex < 0.5){
+			prevbtn.classList.add("disabled");
+			nextbtn.classList.remove("disabled");
+		}else if(activeIndex > 2.5){
+			prevbtn.classList.remove("disabled");
+			nextbtn.classList.add("disabled");
+		}else{
+			prevbtn.classList.remove("disabled");
+			nextbtn.classList.remove("disabled");
+		}
+	}
+	
+	
+	//根据索引激活卡片
+	function activeCardByIndex(index) {
+		activateCard(cards[index]);
+	}
+	
+	//按钮点击事件
+	prevbtn.addEventListener('click', function(){
+		// 按钮禁用则返回
+		if (prevbtn.classList.contains('disabled')){return}
+		//跳到上一个
+		activeCardByIndex(activeIndex - 1);
+	})
+	
+	nextbtn.addEventListener('click', function(){
+		// 按钮禁用则返回
+		if (nextbtn.classList.contains('disabled')){return}
+		//跳到上一个
+		activeCardByIndex(activeIndex + 1);
+	})
+	
+	// 卡片点击事件
+	cards.forEach(card => {
+	    card.addEventListener('click', function() {
+			if (this.classList.contains('active')){
+				loading.in(this.dataset.herf);
+			}
+	        activateCard(this);
+	    });
+		card.addEventListener('mouseenter', function(){
+			if (Number(this.dataset.index) !== activeIndex){
+				tip.textContent = "点击查看详情"
+			}else{
+				tip.textContent = "点击跳转到对应章节"
+				introduction.style.opacity = 0.5;
+			}
+			
+			//更新描述
+			simple.textContent = this.dataset.content;
+			detail.textContent = this.dataset.detail;
+			
+			tip.style.opacity = 0.5;
+		});
+		card.addEventListener('mouseout', function(){
+			introduction.style.opacity = 0;
+			tip.style.opacity = 0;
+		})
+	});
+	
+	activeCardByIndex(1);
+	
+	
+</script>

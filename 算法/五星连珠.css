@@ -1,0 +1,71 @@
+.wx-container {
+    position: relative;
+    width: 900px;
+    height: 300px;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+}
+
+.wximage {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    transition: all 1s ease-in-out;
+}
+
+
+.b1 {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: rgb(142, 142, 193);
+    background-size: cover;
+    /* »√±≥æ∞Õº∆¨∏≤∏«’˚∏ˆ∞¥≈• */
+    background-repeat: no-repeat;
+    /* ∑¿÷π±≥æ∞Õº∆¨÷ÿ∏¥œ‘ æ */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin-top: 30px;
+}
+
+button:hover {
+    background-color: rgb(92, 5, 173);
+    background-size: cover;
+    /* »√±≥æ∞Õº∆¨∏≤∏«’˚∏ˆ∞¥≈• */
+    background-repeat: no-repeat;
+    /* ∑¿÷π±≥æ∞Õº∆¨÷ÿ∏¥œ‘ æ */
+}
+
+.big-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.small-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.small-container:first-child {
+    opacity: 1;
+}
+
+.small-container img {
+    width: 120px;
+    height: 160px;
+    object-fit: cover;
+}
+
+.small-container p {
+    margin-top: 10px;
+}

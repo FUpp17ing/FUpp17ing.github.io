@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>首页demo</title>
+		<!-- 色卡 -->
+		<!-- #9f492d #026399 #e6e2cf #151614 -->
+		<link rel="stylesheet" href="./css/TestPage.css" />
+	</head>
+	<body>
+		<button id="leftButton" class="pageButton"></button>
+		<button id="RightButton" class="pageButton"></button>
+		<div id="container">
+			<div id="rotate">
+				<div class="card">1</div>
+				<div class="card">2</div>
+				<div class="card">3</div>
+				<div class="card">4</div>
+				<div class="card">5</div>
+				<div class="card">6</div>
+				
+				<div class="steel">
+					<img src="./img/星盘测试.png" alt="星盘未加载" />
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script src="./js/jquery-3.7.1.min.js"></script>
+<script>
+	let Ele = $('#container'); //鼠标拖拽事件的响应对象
+	let isDragging = false; //当前出于拖拽状态中
+	let startX,startY;   //鼠标开始拖拽的位置
+	const deg = 45; //相隔的角度
+	const offset = 4;
+	
+	let angleContorler= {
+		currentAngle: 0,  //当前的旋转角度
+		activeIndex: 0,  //初始索引值，以0开始，目前为1
+		sensitivity: 0.7  //默认灵敏度，用于旋转时计算,参数控制鼠标灵敏度，越小阻力越大，为0时无法移动
+	}
+	
+	// 给currentAngle添加setter
+	Object.defineProperties(angleContorler,{
+		angle:{
+			get(){
+				return this.currentAngle
+			},
+			set(value) {
+				let currentAngle = value;
+				// =========== 松开鼠标时自动吸附 =============
+				if (!isDragging){
+					//求余
+					let n = Math.floor(currentAngle/deg)
+					if ((currentAngle - deg*n)<=(0.5*deg)){
+						currentAngle = deg*(n-1);
+					}else{
+						currentAngle = deg*n;
+					};
+				}
+				
+				
+				// ======== 旋转边界控制逻辑 ========
+				// if (currentAngle >= deg*3){
+				// 	this.sensitivity = 0  //鼠标灵敏度设置为0
+				// }else if(currentAngle <= -deg*3){
+				// 	this.sensitivity = 0
+				// }else{
+				// 	this.sensitivity = 0.7
+				// }
+				
+				// ======== active_index控制 ========
+				// currentAngle = 0时，active_index = offest
+				this.activeIndex = Math.floor((currentAngle - 0.5*deg)/deg) + offset;
+				// console.log(currentAngle);
+				this.currentAngle = currentAngle;
+				$('#rotate').css('transform',`rotate(${(currentAngle)}deg)`);
+			}
+		},
+		activeIndex:{
+			// set(value) {
+			// 	// 遍历card中的元素，如果符合索引就添加active类，否则移除=
+			// 	for (i=1;i++;i<=6){
+			// 		if (i === value) $(`.card:nth-of-type(${i})`).addClass('active')
+			// 		else $(`.card:nth-of-type(${i})`).removeClass('active')
+			// 	}				
+			// }
+		}
+	})
+
+	
+	
+	//计算旋转角度函数,f返回旋转角度数值
+	function calculateAngle(startX, startY, currentX, currentY){
+		let a = angleContorler.sensitivity;  //参数控制鼠标灵敏度，越小阻力越大，为0时无法移动
+		
+		//获取旋转中心的位置，用于计算，根据rorate的bottom而定
+		var offsetY = $(document).height()*1.2;
+		var offsetX = $(document).width()/2;
+		
+		let start_atan = Math.atan2(startY-offsetY, startX-offsetX)
+		let current_atan = Math.atan2(currentY-offsetY, currentX-offsetX)
+		
+		let angle = a * (current_atan-start_atan) * (180 / Math.PI);
+		return angle;
+	}
+	
+	
+	// 监听鼠标按下事件
+	Ele.mousedown(function(){
+		isDragging = true;
+		startX = event.clientX;
+		startY = event.clientY;
+	});
+	
+	Ele.mousemove(function(){
+		//检查拖拽状态
+		if (!isDragging) return;
+		//更新鼠标位置
+		let currentX = event.clientX;
+		let currentY = event.clientY;
+		//计算旋转角度
+		let angle = calculateAngle(startX,startY,currentX,currentY);
+		//更新旋转状态
+		angleContorler.angle = angleContorler.angle + angle;
+	})
+	
+	Ele.mouseup(function(){
+		isDragging = false;
+		angleContorler.angle += calculateAngle(startX,startY,event.clientX,event.clientY);
+	})
+	
+</script>

@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>算筹·历法玄机 星移斗转皆成算</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .page {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            font-size: 24px;
+            color: white;
+        }
+
+        .page:nth-child(1) {
+            background-image: url('第一章.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+
+        .page:nth-child(2) {
+            background-image: url('首页底图2.png');
+            display: flex;
+            /* 添加这行，使该 div 成为 flex 容器 */
+            flex-direction: column;
+            /* 添加这行，使子元素垂直排列 */
+            justify-content: center;
+            /* 垂直居中子元素 */
+            align-items: center;
+            /* 水平居中子元素 */
+        }
+
+        .page:nth-child(3) {
+            background-image: url('首页底图2.png');
+            display: flex;
+            /* 添加这行，使该 div 成为 flex 容器 */
+            flex-direction: column;
+            /* 添加这行，使子元素垂直排列 */
+            justify-content: center;
+            /* 垂直居中子元素 */
+            align-items: center;
+            /* 水平居中子元素 */
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page:nth-child(4) {
+            background-image: url('首页底图2.png');
+        }
+
+        .page:nth-child(5) {
+            background-image: url('第二章.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .page:nth-child(6) {
+            background-image: url('首页底图2.png');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .page:nth-child(7) {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-size: 24px;
+            color: white;
+            background-image: url('首页底图2.png');
+        }
+
+        .page:nth-child(8) {
+            flex-direction: column;
+            background-image: url('首页底图2.png');
+        }
+
+        .page:nth-child(9) {
+            background-image: url('首页底图2.png');
+        }
+
+        .page:nth-child(10) {
+            background-image: url('首页底图2.png');
+            display: flex;
+            /* 添加这行，使该 div 成为 flex 容器 */
+            flex-direction: column;
+            /* 添加这行，使子元素垂直排列 */
+            justify-content: center;
+            /* 垂直居中子元素 */
+            align-items: center;
+            /* 水平居中子元素 */
+            padding: 20px;
+
+        }
+
+        .page:nth-child(11) {
+            background-image: url('首页底图2.png');
+
+        }
+
+        .page:nth-child(12) {
+            background-image: url('第三章.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+
+        .page:nth-child(13) {
+            background-image: url('首页底图2.png');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .page:nth-child(14) {
+            background-image: url('首页底图2.png');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            /* 两列之间的间距 */
+        }
+
+        .page:nth-child(15) {
+            background-image: url('首页底图2.png');
+            display: flex;
+            /* 添加这行，使该 div 成为 flex 容器 */
+            flex-direction: column;
+            /* 添加这行，使子元素垂直排列 */
+            justify-content: center;
+            /* 垂直居中子元素 */
+            align-items: center;
+            /* 水平居中子元素 */
+            padding: 20px;
+        }
+
+        .page:nth-child(16) {
+            background-image: url('奔月3.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            /* 添加这行，使该 div 成为 flex 容器 */
+            flex-direction: column;
+            /* 添加这行，使子元素垂直排列 */
+            justify-content: center;
+            /* 垂直居中子元素 */
+            align-items: center;
+            /* 水平居中子元素 */
+            padding: 20px;
+        }
+
+
+        #ylresult {
+            margin-top: 10px;
+			padding: 0;
+        }
+		
+		.laydate-theme-lunar .layui-laydate-main {
+			width: auto;
+		  }
+		  .laydate-theme-lunar .date-cell-inner {
+			padding: 6px;
+			width: 44px;
+			height: 40px;
+			border-radius: 4px !important;
+		  }
+		  .laydate-theme-lunar .layui-this {
+			border-radius: 4px !important;
+		  }
+		  .laydate-theme-lunar .date-cell-inner b {
+			display: block;
+			font-weight: 400;
+			height: 16px;
+			font-size: 14px;
+		  }
+		  .laydate-theme-lunar .date-cell-inner i {
+			display: block;
+			font-style: normal;
+			font-size: 10px;
+		  }
+		  .laydate-theme-lunar .badge {
+			position: absolute;
+			right: 0px;
+			top: 0px;
+			background-color: #4e5877;
+			color: #fff;
+			font-size: 12px;
+			line-height: 14px;
+			padding: 1px 2px;
+			border-radius: 4px;
+			text-decoration: none;
+			transform: scale(0.7);
+		  }
+		  .laydate-theme-lunar .holiday .badge {
+			background-color: #eb3333 !important;
+		  }
+		  .laydate-theme-lunar .hightlight i {
+			color: #1e9fff;
+		  }
+		  .laydate-theme-lunar .layui-this .hightlight i {
+			color: #fff;
+		  }
+		  .laydate-theme-lunar .laydate-month-list > li {
+			height: 50px !important;
+			line-height: 50px !important;
+			width: 24.2% !important;
+			margin: 18px 1px !important;
+		  }
+		  .laydate-theme-lunar .laydate-year-list > li {
+			height: 40px !important;
+			line-height: normal !important;
+			width: 31.3% !important;
+			margin: 8px 2px !important;
+		  }
+		  .laydate-theme-lunar .preview-inner > * {
+			display: inline-block;
+			margin-right: 5px;
+			position: relative;
+			font-size: 12px;
+		  }
+		  .laydate-theme-lunar .preview-inner > .badge {
+			margin-right: 0;
+		  }
+		
+    </style>
+    <link rel="stylesheet" href="五星连珠.css">
+	<link rel="stylesheet" href="../layui/css/layui.css" />
+    <!-- <link rel="stylesheet" href="上元_styles.css">
+    <link rel="stylesheet" href="闰年styles.css"> -->
+    <link rel="stylesheet" href="dsball.css">
+    <link rel="stylesheet" href="日月运动1.css">
+    <!-- <link rel="stylesheet" href="太阳styles.css">
+    <link rel="stylesheet" href="日晷styles.css">
+    <link rel="stylesheet" href="黄经styles.css"> -->
+    <link rel="stylesheet" href="日食月食1.css">
+    <link rel="stylesheet" href="表单.css">
+    <link rel="stylesheet" href="../css/导航栏-蓝.css" />
+    <link rel="stylesheet" href="../css/全局.css" />
+</head>
+
+<body>
+    <div class="page">
+    </div>
+    <div class="page">
+        <p style="margin-top: 20px;">
+            <br>上元积年法是中国古代历法中推算上元的一种方法，“上元”是古人设想出来的“完美宇宙起点”，是指在远古时代，
+            <br>年、月、日、时的起始时刻均为甲子日的夜半，且此时日月合璧、五星连珠，是一种理想的起始状态。所有天文现
+            <br>象都在这个起点上完美对齐，就像把所有闹钟同时调到零点一样。然后从这个时刻开始，通过计算从上元到所求年
+            <br>份的积年数，再结合各种天文周期，来推算出当年的天文现象和日期。
+        </p>
+
+        <div class="wx-container" id="wx-container">
+            <img src="白.png" alt="Image 1" class="wximage">
+            <img src="黑.png" alt="Image 2" class="wximage">
+            <img src="红.png" alt="Image 3" class="wximage">
+            <img src="黄.png" alt="Image 4" class="wximage">
+            <img src="蓝.png" alt="Image 5" class="wximage">
+        </div>
+        <button onclick="arrangeImages()" class="b1">点击五星连珠，达成上元时刻</button>
+        <div class="big-container" onclick="showNextDiv()">
+            <div class="small-container">
+                <img src="时间线.png" alt="Image 1">
+                <p style="font-family: '宋体';">点击展开历代历法</p>
+            </div>
+            <div class="small-container">
+                <img src="大衍历.png" alt="Image 2">
+                <p style="font-family: '宋体';">汉代《大衍历》</p>
+            </div>
+            <div class="small-container">
+                <img src="三统历.png" alt="Image 3">
+                <p style="font-family: '宋体';">唐代《三统历》</p>
+            </div>
+            <div class="small-container">
+                <img src="授时历.png" alt="Image 4">
+                <p style="font-family: '宋体';">元代《授时历》</p>
+            </div>
+        </div>
+    </div>
+    <div class="page">
+        <h3>上元积年法计算</h3>
+        <div class="sycontainer">
+            <div class="syleft-container">
+                <p style="font-family: '宋体';">输入值
+                    <br>• 回归年长度：即地球绕太阳公转一周的时间，不同历法对回归年长度的测定有所不同，
+                    <br>例如《授时历》取回归年长度约为 365.2425 日。
+                    <br>• 朔望月长度：指月球绕地球公转相对于太阳的平均周期，古代历法中也有不同取值，一般约为 29.5306 日。
+                    <br>• 干支周期：通常为 60，代表干支纪年的一个循环周期。
+                    <br>• 所求年份：用户希望计算上元积年到该年份的相关数据。
+                    <br>• 特定天文现象周期：如五星会合周期等，不同行星的会合周期不同，需要根据具体情况输入。
+                    <br>输出值
+                    <br>• 上元积年数：从上元时刻到所求年份的年数。
+                    <br>• 所求年份冬至时刻与上元时刻的时间差：用于确定该年份冬至的具体时间。
+                    <br>• 所求年份朔日时刻与上元时刻的时间差：用于确定该年份朔日的具体时间。
+                    <br>• 所求年份干支纪年起始时刻与上元时刻的时间差：用于确定该年份的干支纪年。
+                </p>
+            </div>
+            <div class="symiddle-container">
+                <form id="input-form">
+                    <label for="A">回归年长度 (A)：</label>
+                    <input type="number" id="A" value="365.2425" required>
+                    <label for="B">朔望月长度 (B)：</label>
+                    <input type="number" id="B" value="29.5306" required>
+                    <label for="C">干支周期 (C)：</label>
+                    <input type="number" id="C" value="60" required>
+                    <label for="target_year">所求年份：</label>
+                    <input type="number" id="target_year" value="2024" required>
+                    <input type="submit" value="计算">
+                </form>
+            </div>
+            <div class="syright-container">
+                <div id="result-container">
+                    <h4>计算结果</h4>
+                    <p>上元积年数：<span id="shangyuan_years"></span></p>
+                    <p>冬至时刻差：<span id="delta_t1"></span></p>
+                    <p>朔日时刻差：<span id="delta_t2"></span></p>
+                    <p>干支纪年起始时刻差<span id="delta_t3"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="ry-container">
+            <div class="ry-words">
+                根据月相圆缺变化的周期（即朔望月）来制订的历法叫阴历。<br>
+                以地球围绕太阳的运转周期（即回归年）为根据而制订的历法，叫阳历。<br>
+                我国的古代历法，把回归年作为年的单位，把朔望月作为月的单位，是一
+                种兼顾阳历和阴历的阴阳合历。<br>
+                但是两种周期之间存在差异，按月亮周期算，1年≈354天，但实际太阳年
+                ≈365天，每年少11天，季节就会逐渐错乱。于是就要引入“闰月”来调节。
+                在古代早期，中国历法家把十九年定为计算闰年的单位，称为“一章”，
+                在每一章里有七个闰年，即“19年7闰”。这种闰法一直采用了一千多年。
+                412年，北凉赵厞创作《元始历》，才打破了岁章的限制，规定在600年
+                中间插入221个闰月。<br>
+                祖冲之吸取了赵厞的理论，加上他自己的观察，认为“19年7闰”的闰数过多，
+                每二百年就要差一天，而赵厞“600年221闰”也不十分准确。因此，祖冲之
+                提出了391年144闰月的新闰法。祖冲之的闰周精密程度极高，按照他的推算，
+                一个回归年的长度为365.2428141日（现测值365.24220日），和今时的推
+                算值仅相差46秒<br>
+                本计算模拟了“391年144闰”，采用数学平均方式来计算闰年。需要注意的是，这种计算方式与实际的闰年设置存在差异。自落下闳制定《太初历》时采用“以无中气月置闰”的方法后，闰年的确定并非简单地平均分配。
+                “以无中气月置闰”是根据二十四节气来判断，一个朔望月内如果没有中气，就设置为闰月。这种方法更符合天文实际，能更精确地反映月亮和太阳的运行周期。
+                <b>因此，本计算结果仅供参考，不能完全等同于实际的历法闰年安排。</b>
+            </div>
+            <div class="ry-form">
+                <div class="calculation-section">
+                    <h4>判断特定年份是否为闰年</h4>
+                    <label for="single-year">输入年份:</label>
+                    <input type="number" id="single-year" required>
+                    <button class="b2" onclick="checkSingleYear()">计算</button>
+                    <p id="single-year-result"></p>
+                </div>
+                <!-- 一段时间内闰年数量的计算表单 -->
+                <div class="calculation-section">
+                    <h4>计算一段时间内的闰年数量</h4>
+                    <label for="start-year">起始年份:</label>
+                    <input type="number" id="start-year" required>
+                    <label for="end-year">结束年份:</label>
+                    <input type="number" id="end-year" required>
+                    <button class="b2" onclick="countLeapYears()">计算</button>
+                    <p id="leap-year-count-result"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="page">天体运动计算封面</div> -->
+    <div class="page"></div>
+    <div class="page">
+        <div class="nc-container">
+            <div class="image-slider">
+                <!-- 这里替换为你的长图 -->
+                <img src="内插法 (2).png" alt="长图">
+            </div>
+        </div>
+    </div>
+    <div class="page">
+        <p style="font-family: '宋体'; font-size: 24px; margin-left: 100px;">日月相交：拖动小球使其重合</p>
+        <div id="curve-container">
+            <div id="trail">
+            </div>
+            <div id="tzball">
+            </div>
+            <div id="new-ball"> <!-- 新增的小球 -->
+            </div>
+        </div>
+        <div class="ds">
+            <div class="ds1">
+                <p>根据历法书，太阳和月亮差不多要相交了</p>
+                <img src="定朔1.png" alt="长图">
+            </div>
+            <div class="ds2">
+                <p> <br>
+                    <br>
+                    <br>
+                    古代中国历法中，确定每月第一天（初一、朔日）的计算方法有平朔和定朔两种。<br>
+                    以日、月黄经度相等（日月合朔）的时刻定为朔，以这天为朔日，作为每月的第一天（初一），称定朔。<br>
+                    取月的平均日数为29.5日，大月30日，小月29日，大小月相间，用这种方法定出的每月初一日叫“平朔”。
+                    但是由于月行速度在一近点月内时时变动，日行速度在一回归年内也有快慢，日月合朔就未必在平朔的初一。<br>
+                    定朔考虑了太阳运行和月球运行的不均等性，将含有真正“朔”的当天作为每月的开始，反映了真实的天象。<br>
+                    定朔较平朔更为精确。南朝宋何承天首倡，唐初始采用。<br>
+                </p>
+            </div>
+            <div class="ds3">
+                <p style="margin-right: 0;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp根据观测，朔望时刻要来了</p>
+                <img src="定朔2.png" alt="长图">
+            </div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="dqcontainer">
+            <div class=rotating-image-container>
+                <img src="定气.png" alt="旋转图片">
+            </div>
+            <div class="dqtext-container">
+                <p> &nbsp<br>
+                    &nbsp<br>
+                    <br>
+                    <br>
+                    定气，是一种确定节气的制度，以太阳在黄道上的位置为标准，自春分点起算，黄经每隔15°为一个节气。<br>
+                    在”定气“之前最初人们采用的是“平气”，把一周年按时间平分为二十四节气，从立春开始，每过15.22日就交一个新的节气。<br>
+                    但是实际上，太阳的周年视运动是不等速的，在各个平气之间，太阳在黄道上所走的度数并不相同。节气间的天数也是不均匀的：冬至前后太阳移行快些，两节气间只14天多；夏至前后太阳移行慢些，两节气间达16天多。<br>
+                    北齐张子信发现太阳视运动不均匀现象。采用定气，节气间的天数虽然多寡不一，但能表示太阳真实位置，使春分、秋分一定在昼夜平分那一天。
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="dqtext-container">
+            <p>定气，是一种确定节气的制度，以太阳在黄道上的位置为标准，自春分点起算，黄经每隔15°为一个节气。<br>
+                在”定气“之前最初人们采用的是“平气”，把一周年按时间平分为二十四节气，从立春开始，每过15.22日就交一个新的节气。<br>
+                但是实际上，太阳的周年视运动是不等速的，在各个平气之间，太阳在黄道上所走的度数并不相同。节气间的天数也是不均匀的：冬至前后太阳移行快些，两节气间只14天多；夏至前后太阳移行慢些，两节气间达16天多。<br>
+                北齐张子信发现太阳视运动不均匀现象。采用定气，节气间的天数虽然多寡不一，但能表示太阳真实位置，使春分、秋分一定在昼夜平分那一天。</p>
+        </div>
+        <div id="solar-system">
+            <div id="sun">
+                <img src="太阳.png" alt="太阳" style="width: 100%; height: 100%; border-radius: 50%;">
+            </div>
+            <div id="earth-orbit">
+                <div id="earth">
+                    <img src="地球.png" alt="地球" style="width: 100%; height: 100%; border-radius: 50%;">
+                    <div id="moon-orbit">
+                        <!-- 月亮 -->
+                        <div id="moon">
+                            <img src="月亮.png" alt="月亮" style="width: 100%; height: 100%; border-radius: 50%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page">
+        <h1>二十四节气</h1>
+        <div class="jqcontainer">
+            <div id="image-carousel">
+                <img src="1.jpg" alt="节气图1" class="carousel-image">
+                <img src="2.jpg" alt="节气图2" class="carousel-image">
+                <img src="3.jpg" alt="节气图2" class="carousel-image">
+                <img src="4.jpg" alt="节气图1" class="carousel-image">
+                <img src="5.jpg" alt="节气图2" class="carousel-image">
+                <img src="6.jpg" alt="节气图2" class="carousel-image">
+                <img src="7.jpg" alt="节气图1" class="carousel-image">
+                <img src="8.jpg" alt="节气图2" class="carousel-image">
+                <img src="9.jpg" alt="节气图2" class="carousel-image">
+                <img src="10.jpg" alt="节气图2" class="carousel-image">
+                <img src="11.jpg" alt="节气图2" class="carousel-image">
+                <img src="12.jpg" alt="节气图2" class="carousel-image">
+                <p>画作源于《二十四番花信风图册》</p>
+            </div>
+            <div id="description">
+                <p>“日行一度，十五日为一节，以生二十四时之变，斗指子则冬至，音比黄钟。”——《淮南子·天文训》</p>
+                <p>“二十四节气”是中国人通过观察太阳周年运动，认知一年中时令、气候、物候等方面变化规律所形成的知识体系和社会实践，被誉为“中国的第五大发明”。</p>
+                <p>“二十四节气”起源于黄河流域，是上古农耕文明的产物，春秋时代，我国已掌握“十九年七闰”的历法制度。但是，因平年和闰年的天数相差较大，仍然不便于指导农业生产。为弥补这种缺陷，华夏先民就创造了节气，春秋时制定出仲春、仲夏、仲秋、仲冬等节气。经过不断地改进，到秦汉年间已完全确立二十四节气。
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="tyleft">
+            <h4>太阳视黄经计算二十四节气</h4>
+            <form id="tyinputForm" class="wide-form">
+                <label for="year">年份：</label>
+                <input type="number" id="year" value="2024" required>
+                <label for="month">月份：</label>
+                <input type="number" id="month" value="10" min="1" max="12" required>
+                <label for="day">日期：</label>
+                <input type="number" id="day" value="1" min="1" max="31" required>
+                <label for="hour">小时：</label>
+                <input type="number" id="hour" value="12" min="0" max="23" required>
+                <label for="minute">分钟：</label>
+                <input type="number" id="minute" value="0" min="0" max="59" required>
+                <label for="second">秒：</label>
+                <input type="number" id="second" value="0" min="0" max="59" required>
+                <input type="submit" value="计算">
+            </form>
+            <!-- <div id="tyresult">
+                <p id="longitudetyresult"></p>
+                <p id="termtyresult"></p>
+            </div> -->
+        </div>
+        <div class="tyright">
+            <p style="line-height: 1.6em; margin-top: 80px;">
+                在中国古代天文学系统中，黄道是古人假想的太阳周年运行轨道。地球沿着自己的轨道围绕太阳公转，从地球轨道不同的位置上看太阳，则太阳在天球上的投影位置也不尽相同。这种视位置的移动叫做太阳的视运动。太阳在天球上的“视运动”分为两种情形：“周日视运动”和“周年视运动”。太阳的“周年视运动”轨迹就是黄道。
+                地球的公转在地球上人看来就表现为太阳周年视运动，其运行线路（即地球公转轨道在天球上的反应）称为黄道。黄经就是黄道上的度量坐标（经度）。按天文学惯例，以春分点为起点自西向东度量，分360度。古人把太阳黄经的360度划分成24等份，每份15度，每15度为一个节气。两个节气间相隔日数为15天左右，全年即有二十四个节气。
+            </p>
+            <div id="tyresult">
+                <p id="longitudetyresult"></p>
+                <p id="termtyresult"></p>
+            </div>
+        </div>
+    </div>
+    <div class="page"></div>
+    <div class="page">
+        <!-- <div class="rball-container">
+            <div class="rball ball-1"></div>
+            <div class="rball ball-2"></div>
+        </div>
+        <div class="text-container">
+            <p>这里是你要显示的文字内容。</p>
+        </div> -->
+        <div class="overlay-container">
+            <div class="rball-container">
+                <div class="rball ball-1"></div>
+                <div class="rball ball-2"></div>
+            </div>
+            <div class="text-container">
+                <p>
+                    食限指日、月食发生所必须具备的日﹑月﹑地三者的相对位置满足
+                    <br>一定的界限。日食、月食的发生，要求太阳对于黄道面和白道（月
+                    <br>球的公转平面）之间的交点的角的距离不能超出一定的限度，此限
+                    <br>度叫“食限”。
+                    <br>三国时期魏国的杨伟发现日、月食发生的食限，并推算月食分数和
+                    <br>初亏的方位。景初元年（237年），杨伟撰成《景初历》，是中国古
+                    <br>代第一部具有明确的日食推步内容的历法。
+                    <br>交点月又称交周月，是指月球绕地球运转，连续两次通过白道和黄
+                    <br>道的同一交点所需的时间。
+                    <br>日月食（统称交食）都发生在黄白交点附近，因为只有在这样的狭
+                    <br>窄区域，3个天体才有可能排列在一条直线上。
+                    <br>中国古代第一个提出交点月概念并明确黄白交点西移现象的是刘洪。
+                    <br>他在编算《乾象历》时给出了他的计算方法，但并没有实际计算。
+                    <br>祖冲之在我国天文学史上第一次提出“交点月”长度为27.2123日，
+                    <br>与现今推算值仅相差十万分之一日，即不到1秒。
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="hjleft">
+            <div class="earth-banner"></div>
+        </div>
+        <div class="hjright">
+            <h3>黄赤坐标换算</h3>
+            <form id="hjinputForm">
+                <label for="lambda">黄经（度）：</label>
+                <input type="number" id="lambda" value="0" required>
+                <label for="beta">黄纬（度）：</label>
+                <input type="number" id="beta" value="0" required>
+                <input type="submit" value="计算赤道坐标">
+            </form>
+            <div id="hjresult">
+                <p id="alphaResult">赤经：</p>
+                <p id="deltaResult">赤纬：</p>
+            </div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="dscontainer">
+            <div class="dsball"></div>
+        </div>
+        <div>
+            <p>
+                古代早期算出木星（古称岁星）每十二年运转一周，于是出现了岁星纪年法，通行于春秋战国。
+                <br>天文历学家把岁星运行的轨道分为12等分，岁星每年运行一星次，就以岁星在该年所在的部位为
+                <br>岁名。
+                <br>西汉刘歆作《三统历》时，发现木星运转一周不足十二年。
+                <br>南北朝时期，祖冲之更进一步，对木、水、火、金、土等五大行星在天空运行的轨道和运行一周
+                <br>所需的时间，也进行了观测和推算，给出了更精确的五星会合周期。
+                <br>得出木星每84年超辰一次的结论，即定木星公转周期为11.858年（今测为11.862年）。并得出更
+                <br>精确多五星会合周期，木星398.903日（误差0.019日），火星780.031日（误差0.094日），
+                <br>土星378.070日（误差0.022日），金星583.931日（误差0.009日），水星115.880日（误差0.002日）。
+            </p>
+        </div>
+    </div>
+    <div class="page">
+        <div class="moon-form-container">
+            <h3>查看你生日当天的月亮</h3>
+            <div class="moon-form">
+                <div class="layui-form">
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">生日</label>
+                      <div class="layui-input-inline">
+                        <input type="text" class="layui-input" id="ID-laydate-demo" placeholder="请点击这里">
+                      </div>
+                </div>
+				<div class="layui-form">
+					
+				</div>
+            </div>
+            <div id="ylresult" class="moon-result"></div>
+        </div>
+    </div>
+    <!-- 跳转动画 -->
+    <div class="loading"></div>
+
+    <!-- 顶部感应区域，用于控制导航栏自动隐藏 -->
+    <div class="top-trigger"></div>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">天玑谱</div>
+        <ul class="nav-links">
+            <li><a onclick="loading.in('../pages/首页.html')">首页</a></li>
+            <li><a onclick="loading.in('../算法/算法.html')">算筹</a></li>
+            <li><a onclick="loading.in('../pages/工具页.html')">观象</a></li>
+            <li><a onclick="loading.in('../pages/人物.html')">问道</a></li>
+            <li><a onclick="loading.in('../pages/书籍.html')">典藏</a></li>
+        </ul>
+    </nav>
+    <script src="../layui/layui.js"></script>
+	<script src="../算法/lunar.min.js"></script>
+	<script>
+		
+		const imageList = [
+		    "moon_1.png", "moon_2.png",
+		    "moon_3.png",
+		    "moon_4.png",
+		    "moon_5.png",
+		    "moon_6.png",
+		    "moon_7.png",
+		    "moon_8.png",
+		    "moon_9.png",
+		    "moon_10.png", // 补充缺失的 moon_10.png
+		    "moon_11.png",
+		    "moon_12.png",
+		    "moon_13.png",
+		    "moon_14.png",
+		    "moon_15.png",
+		    "moon_16.png",
+		    "moon_17.png",
+		    "moon_18.png",
+		    "moon_19.png",
+		    "moon_20.png",
+		    "moon_21.png", // 补充更多日期对应的图片文件名
+		    "moon_22.png",
+		    "moon_23.png",
+		    "moon_24.png",
+		    "moon_25.png",
+		    "moon_26.png",
+		    "moon_27.png",
+		    "moon_28.png",
+		    "moon_29.png",
+		    "moon_30.png",
+		    "moon_31.png"
+		];
+		
+		layui.use(function () {
+			var laydate = layui.laydate;
+			var $ = layui.$;
+			var util = layui.util;
+			// 渲染
+			laydate.render({
+				elem: '#ID-laydate-demo',
+				btns: ['now'],
+				theme: 'lunar',
+				max:-7,
+				ready: function (date) {
+					if (!this._previewEl) {
+					  var key = this.elem.attr('lay-key');
+					  var panelEl = $('#layui-laydate' + key);
+					  this._previewEl = panelEl.find('.layui-laydate-preview');
+					  this.cellRender(date);
+					}
+				  },
+				change: function (value, date) {
+					this.value = value;
+					this.cellRender(date);
+				  },
+				onNow: function (value, date) {
+					this.cellRender(date);
+				},
+				done:function showMoon(value, date, endDate) {
+					this.value = value;
+					var lunarDate = Lunar.fromDate(new Date(date.year, date.month, date.date));
+					var day = lunarDate.getDay();
+					const targetImage = `moon_${day}.png`;
+
+					console.log(`尝试加载: ${targetImage}`);  // 调试信息
+
+					const foundImage = imageList.find(image => image === targetImage);
+
+					if (foundImage) {
+						const img = document.createElement('img');
+						// 修改为更可靠的路径
+						img.src = `moon/${foundImage}`;
+						img.alt = `${month}月${day}日的月亮`;
+
+						img.style.maxWidth = '100%'; // 添加样式控制
+
+						img.onerror = function () {
+							console.error('加载失败:', this.src);
+							document.getElementById('ylresult').innerHTML =
+								`图片加载失败，请检查路径: ${this.src}`;
+						};
+
+						const resultContainer = document.getElementById('ylresult');
+						resultContainer.innerHTML = '';
+						resultContainer.appendChild(img);
+					} else {
+						document.getElementById('ylresult').innerHTML =
+							'未找到匹配的图片';
+					}
+				},
+				cellRender: function (ymd, render, info) {
+						var that = this;
+						var y = ymd.year;
+						var m = ymd.month;
+						var d = ymd.date;
+						var lunarDate = Solar.fromYmd(y, m, d).getLunar();
+						var lunar = lunarDate.getDayInChinese();
+						var jieQi = lunarDate.getJieQi();
+						var holiday = HolidayUtil.getHoliday(y, m, d);
+						var displayHoliday =
+						  holiday && holiday.getTarget() === holiday.getDay()
+							? holiday.getName()
+							: undefined;
+						var displayHolidayBadge =
+						  holiday && holiday.getTarget()
+							? holiday.isWork()
+							  ? '班'
+							  : '休'
+							: undefined;
+						var isHoliday = holiday && holiday.getTarget() && !holiday.isWork();
+						// 在预览区显示自定义农历相关信息
+						if (that._previewEl && (!info || (info && info.type === 'date'))) {
+						  var holidayBadgeStyle = [
+							'color:#fff',
+							'background-color:' + (isHoliday ? '#eb3333' : '#333'),
+							'display:' + (displayHolidayBadge ? 'inline-block' : 'none'),
+						  ].join(';');
+						  var festivalBadgeStyle = [
+							'color:#fff',
+							'background-color:#1e9fff',
+							'display:' +
+							  (displayHoliday || jieQi ? 'inline-block' : 'none'),
+						  ].join(';');
+						  var tipsText = [
+							'<div class="preview-inner">',
+							'<div style="color:#333;">农历' +
+							  lunarDate.getMonthInChinese() +
+							  '月' +
+							  lunarDate.getDayInChinese() +
+							  '</div>',
+							'<div style="font-size:10px">' +
+							  lunarDate.getYearInGanZhi() +
+							  lunarDate.getYearShengXiao() +
+							  '年</div>',
+							'<div style="font-size:10px">' +
+							  lunarDate.getMonthInGanZhi() +
+							  '月 ' +
+							  lunarDate.getDayInGanZhi() +
+							  '日</div>',
+							'<div class="badge" style="' +
+							  holidayBadgeStyle +
+							  '">' +
+							  displayHolidayBadge +
+							  '</div>',
+							'<div class="badge" style="' +
+							  festivalBadgeStyle +
+							  '">' +
+							  (displayHoliday || jieQi) +
+							  '</div>',
+							'</div>',
+						  ].join('');
+						  that._previewEl.html(tipsText);
+						}
+						if (!render) return;
+						// 面板类型
+						if (info.type === 'date') {
+						  var clazz = [
+							'date-cell-inner',
+							isHoliday ? 'holiday' : '',
+							displayHoliday || jieQi ? 'hightlight' : '',
+						  ].join(' ');
+						  var content = [
+							'<div class="' + clazz + '">',
+							'<b>' + d + '</b>',
+							'<i>' + (displayHoliday || jieQi || lunar) + '</i>',
+							displayHolidayBadge
+							  ? '<u class="badge">' + displayHolidayBadge + '</u>'
+							  : '',
+							'</div>',
+						  ].join('');
+						  // render(content)
+						  // render($(content)[0])
+						  var contentEl = $(content);
+						  contentEl.on('contextmenu', function (e) {
+							e.preventDefault();
+							layer.tips(lunarDate.toString(), this, {
+							  tips: [1, '#16baaa'],
+							  zIndex: 999999999,
+							});
+						  });
+						  render(contentEl);
+						} else if (info.type === 'year') {
+						  var lunarDate = Lunar.fromDate(new Date(y + 1, 0));
+						  var lunar =
+							lunarDate.getYearInGanZhi() + lunarDate.getYearShengXiao();
+						  render(
+							[
+							  y + '年',
+							  '<div style="font-size:12px">' + lunar + '年</div>',
+							].join('')
+						  );
+						} else if (info.type === 'month') {
+						  var lunar = lunarDate.getMonthInChinese();
+						  render([m + '月(' + lunar + '月)'].join(''));
+						}
+					  },
+				});
+			  });
+        
+        const tzball = document.getElementById('tzball');
+        const container = document.getElementById('curve-container');
+        const trail = document.getElementById('trail');
+
+        let isDragging = false;
+        let startX, startY;
+        let initialBallX, initialBallY;
+
+        // 鼠标按下事件
+        tzball.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            initialBallX = parseFloat(getComputedStyle(tzball).left);
+            initialBallY = parseFloat(getComputedStyle(tzball).top);
+            // 清空拖尾
+            trail.innerHTML = '';
+        });
+
+        // 鼠标移动事件
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const dx = e.clientX - startX;
+                const newX = initialBallX + dx;
+
+                // 这里的曲线函数与 CSS 中的 SVG 路径匹配
+                const curveY = 100 + 100 * Math.sin((newX - 50) * 0.01);
+
+                // 限制小球在容器内
+                if (newX >= 50 && newX <= 750) {
+                    tzball.style.left = newX + 'px';
+                    tzball.style.top = curveY + 'px';
+
+                    // 创建一个新的拖尾元素
+                    const trailDot = document.createElement('div');
+                    trailDot.style.position = 'absolute';
+                    trailDot.style.width = '10px';
+                    trailDot.style.height = '10px';
+                    trailDot.style.backgroundColor = 'rgba(0, 123, 255, 0.3)';
+                    trailDot.style.borderRadius = '50%';
+                    trailDot.style.left = newX - 5 + 'px';
+                    trailDot.style.top = curveY - 5 + 'px';
+                    trail.appendChild(trailDot);
+                }
+            }
+        });
+
+        // 鼠标松开事件
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+        });    
+    </script>
+    </div>
+    <script src="五星连珠.js"></script>
+    <script>
+        let currentIndexSmallContainers = 0;
+        let currentIndexCarousel = 0;
+        let carouselInterval;
+
+        function showNextDiv() {
+            const smallContainers = document.querySelectorAll('.small-container');
+            if (currentIndexSmallContainers < smallContainers.length) {
+                const showDiv = () => {
+                    if (currentIndexSmallContainers < smallContainers.length) {
+                        smallContainers[currentIndexSmallContainers].style.opacity = '1';
+                        currentIndexSmallContainers++;
+                        setTimeout(showDiv, 500);
+                    }
+                };
+                showDiv();
+            }
+        }
+
+        const images = document.querySelectorAll('.carousel-image');
+
+        // 显示指定索引的图片
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.style.display = i === index ? 'block' : 'none';
+            });
+        }
+
+        // 切换到下一张图片
+        function nextImage() {
+            currentIndexCarousel = (currentIndexCarousel + 1) % images.length;
+            showImage(currentIndexCarousel);
+        }
+
+        // 每隔2秒自动切换
+        carouselInterval = setInterval(nextImage, 1300);
+    </script>
+    <script src="上元_scripts.js"></script>
+    <script src="闰年script.js"></script>
+    <script src="太阳script.js"></script>
+    <!-- <script src="日晷script.js"></script> -->
+    <script src="黄经scripts.js"></script>
+</body>
+<script src="../js/loading.js"></script>
+<script src="../js/navbar.js"></script>
+
+</html>

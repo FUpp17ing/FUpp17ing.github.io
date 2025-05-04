@@ -1,0 +1,354 @@
+/* 全局样式 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    text-align: center;
+    color: #333;
+}
+
+p {
+    color: #333;
+    font-size: 20px;
+    font-family: '宋体';
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* 表单通用样式 */
+form {
+    background-image: url('../img/算法/form背景.png');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    /* 添加这一行 */
+    background-clip: border-box;
+    /* 添加这一行 */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px 20px;
+    max-width: 600px;
+    /* margin: 0 auto; */
+    transition: box-shadow 0.3s ease;
+}
+
+form:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 18px;
+}
+
+input {
+    width: 90%;
+    padding: 8px 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    /* 新增样式让按钮居中 */
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.b2 {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    /* 新增样式让按钮居中 */
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    transition: background-color 0.3s ease;
+}
+
+.b2:hover {
+    background-color: #0056b3;
+}
+
+/* 结果容器样式 */
+#tyresult,
+#result,
+#hjresult,
+#result-container {
+    background-image: url('../img/算法/form背景.png');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    /* 添加这一行 */
+    background-clip: border-box;
+    /* 添加这一行 */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+}
+
+#result-container {
+    font-family: "宋体", SimSun;
+    font-size: 20px;
+    background-image: url('../img/算法/form背景.png');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    /* 添加这一行 */
+    background-clip: border-box;
+    /* 添加这一行 */
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    padding: 30px;
+    margin-top: 20px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+#tyresult:hover,
+#result:hover,
+#hjresult:hover,
+#result-container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* 弹性布局样式 */
+.sycontainer {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.syleft-container,
+.symiddle-container,
+.syright-container {
+    width: 30%;
+}
+
+.hjleft,
+.hjright {
+    flex: 1;
+    /* background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 地球动画样式 */
+.earth-banner {
+    height: 500px;
+    width: 500px;
+    position: relative;
+    transition: left 0.3s linear;
+    background: url("../img/算法/R-C.jpg");
+    background-size: cover;
+    background-position: left;
+    bottom: 0px;
+    border-radius: 50%;
+    animation: earthRotate 30s linear 0s infinite;
+    box-shadow: 0px 0 20px RGBA(255, 255, 255, 0.2), -5px 0px 8px #c3f4ff inset,
+        15px 2px 25px #000 inset, -24px -2px 34px #c3f4ff99 inset,
+        250px 0px 44px #00000066 inset, 150px 0px 38px #000000aa inset;
+}
+
+@keyframes earthRotate {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 400px 0;
+    }
+}
+
+/* 计算区域样式 */
+.calculation-section {
+    background-image: url('../img/算法/form背景.png');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    /* 添加这一行 */
+    background-clip: border-box;
+    /* 添加这一行 */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.ry-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 2000px;
+    margin: 0 auto;
+}
+
+.ry-words {
+    width: 55%;
+    padding: 50px 50px;
+    line-height: 1.6;
+}
+
+.ry-form {
+    width: 45%;
+    padding: 50px 50px;
+}
+
+.wide-form {
+    max-width: 700px;
+    /* 修改为更大的值 */
+}
+
+.moon-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    text-align: center;
+}
+
+.moon-form {
+    background-image: url('../img/算法/form背景.png');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    /* 添加这一行 */
+    background-clip: border-box;
+    /* 添加这一行 */
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.moon-form label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: '宋体', SimSun;
+}
+
+.moon-form input {
+    width: 400px;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s;
+    background-color: #f9f9f9;
+}
+
+.moon-form input:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+    background-color: #fff;
+}
+
+.moon-button {
+    background: linear-gradient(135deg, #4a90e2, #6b5b95);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: '宋体', SimSun;
+    margin-top: 1px;
+    width: 200px;
+}
+
+.moon-button:hover {
+    background: linear-gradient(135deg, #3a7bc8, #5a4a85);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.moon-result {
+    padding: 30px;
+    margin-top: 20px;
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.moon-result img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.ry-words {
+    font-family: '宋体';
+    font-size: 18px;
+    color: black;
+    background-image: url('../img/算法/闰月计算1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#hjresult {
+    width: 600px;
+}
+
+.tyleft,
+.tyright {
+    flex: 1;
+    /* background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    padding: 20px 80px;
+    display: flex;
+    flex-direction: column;
+}

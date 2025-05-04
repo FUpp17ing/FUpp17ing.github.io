@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overlapping Balls Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .rball-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+
+        .rball {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .ball-1 {
+            background-color: #ff6b6b;
+            top: 50px;
+            left: 0;
+        }
+
+        .ball-2 {
+            background-color: #48dbfb;
+            top: 50px;
+            left: 50px;
+        }
+
+        .rball-container:hover .ball-1 {
+            transform: translate(-50px);
+        }
+
+        .rball-container:hover .ball-2 {
+            transform: translate(50px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ball-container">
+        <div class="ball ball-1"></div>
+        <div class="ball ball-2"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>问道·星官列传 ‌群贤列宿耀长空</title>
+    <script src="../js/tailwindcss.js"></script>
+    <link href="../css/all.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../css/全局.css" />
+	<link rel="stylesheet" href="../css/导航栏-白.css" />
+	<style>
+		*{
+			overflow: hidden;
+		}
+        .flex.h-screen {
+            background-image: url("../img/人物/蓝色底图.png");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .circle-container {
+            position: relative;
+            width: 650px;
+            height: 650px;
+        }
+
+        .circle-image {
+            position: absolute;
+            height: 350px;
+            max-width: 300px;
+            transition: box-shadow 0.3s;
+        }
+
+        .circle-image:hover {
+            filter: drop-shadow(0 0 20px rgba(255, 225, 1, 0.911));
+            z-index: 1;
+        }
+
+        #content-display {
+            position: relative;
+            z-index: 2;
+            /* 确保文字在悬浮图片上方 */
+        }
+
+        #content-display h3 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: '隶书';
+        }
+
+        #content-display p {
+            font-size: 1.5rem;
+            font-family: '宋体';
+        }
+
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            position: relative;
+        }
+
+        /* 修改悬浮图片样式 */
+        .hover-image {
+            position: absolute;
+            top: 50%;
+            right: -200px;
+            /* 初始位置在右侧外部 */
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: all 0.5s ease-in-out;
+            width: 600px;
+            height: auto;
+            z-index: 1;
+            /* 确保在文字下方 */
+        }
+
+        /* 鼠标悬停时显示悬浮图片 */
+        .circle-container:hover .hover-image {
+            opacity: 0.4;
+            /* 透明度40% */
+            right: 20px;
+            /* 从右向左滑动到内容区域 */
+        }
+    </style>
+</head>
+
+<body class="flex h-screen">
+	<!-- 跳转动画 -->
+	<div class="loading"></div>
+	
+	<!-- 顶部感应区域，用于控制导航栏自动隐藏 -->
+	<div class="top-trigger"></div>
+	<!-- 导航栏 -->	
+	<nav class="navbar">
+	    <div class="logo">天玑谱</div>
+	    <ul class="nav-links">
+	        <li><a onclick="loading.in('../pages/首页.html')">首页</a></li>
+	        <li><a onclick="loading.in('../算法/算法.html')">算筹</a></li>
+	        <li><a onclick="loading.in('../pages/工具页.html')">观象</a></li>
+	        <li><a onclick="loading.in('../pages/人物.html')">问道</a></li>
+	        <li><a onclick="loading.in('../pages/书籍.html')">典藏</a></li>
+	    </ul>
+	</nav>
+	
+    <div class="circle-container m-10">
+        <img src="../img/人物/班昭.png" alt="Image 1" class="circle-image" data-content="班昭 东汉|“元光元年六月，客星见于房”——《汉书·天文志》
+        班昭撰写的《汉书·天文志》系统记录了上古至
+        东汉时期的天文学知识，尤其是对汉代天象变化
+        的情况进行了详实记载，借天象变化阐述了天人
+        合一、天人相应的思想。《天文志》记载了世界
+        上第一颗新星。
+         “元光元年六月，客星见于房” ，这一记载既说
+        明了新星出现的时间，又注明了它的空间位置。" data-hover-image="../img/人物/班昭.png" onclick="showContent(this)">
+        <img src="../img/人物/张衡.png" alt="Image 4" class="circle-image" data-content="张衡 东汉|”数术穷天地，制作侔造化；精仪揭天地，科圣著千秋“
+                张衡精通天文历算，创制了世界上第一架能比较
+                准确地表演天象的漏水转浑天仪，对日月食原因
+                作了最早的科学解释，绘制记录2500颗星体的星
+                图。
+                提出“宇之表无极，宙之端无穷”的观点，是东汉
+                中期浑天说的代表人物之一，认为“天之包地，
+                犹壳之裹黄”，著有《灵宪》《浑仪图注》等。" data-hover-image="../img/人物/张衡.png" onclick="showContent(this)">
+
+        <img src="../img/人物/祖冲之.png" alt="Image 3" class="circle-image" data-content="祖冲之 南北朝|“迟疾之率，非出神怪，有形可检，有数可推”
+        ——祖冲之《辨戴法兴难新历》
+        祖冲之在《大明历》的编纂中，区分了回归年和
+        恒星年，最早将岁差引进历法。
+        提出了用圭表测量正午太阳影长以定冬至时刻的
+        方法，并采用了精密度极高的391年144闰月的新
+        闰法，和今时的推算值仅相差46秒。
+        首次提出“交点月”的计算，能更准确地推算出日
+        月食发生时间，给出了更精确的五星会合周期。" data-hover-image="../img/人物/祖冲之.png" onclick="showContent(this)">
+        <img src="../img/人物/甘德.png" alt="Image 2" class="circle-image" data-content="甘德 战国|“昔之传天数者：高辛之前，重、黎；...在齐，甘公。”
+                ——《史记·天官书》
+                世界上最古老星表的编制者和木卫三的最早发现者。
+                他著有《天文星占》8卷、《岁星经》等。后人把
+                他与石申各自写出的天文学著作结合起来，称为
+                《甘石星经》，是现存世界上最早的天文学著作。" data-hover-image="../img/人物/甘德.png" onclick="showContent(this)">
+        <img src="../img/人物/郭守敬.png" alt="Image 5" class="circle-image" data-content="郭守敬 元朝|“历之本在于测验，而测验之器莫先仪表”——郭守敬
+        著有《推步》《立成》等十四种天文历法著作。
+        主持全国范围的天文测量——“四海测验”，与许衡、
+        王恂等历时四年，制定出《授时历》，成为当时
+        世界上最先进的一种历法，通行三百六十多年。
+        为修订历法，郭守敬还改制、发明了简仪、高表
+        等十七种天文仪器。
+        他所从事和领导的观测项目甚多，如冬至时刻、
+        二十八宿距度和星表、四海测验、黄赤交角以及
+        一些历元时刻的测定，其中大部分数据都是中国
+        古代历法史上最精确的，或近于最佳的。" data-hover-image="../img/人物/郭守敬.png" onclick="showContent(this)">
+        <img src="../img/人物/落下闳.png" alt="Image 6" class="circle-image" data-content="落下闳 西汉|“自汉落下闳作浑天仪，始立仪象之权舆”——朱文鑫
+        创制“太初历”，是中国历史上第一部有完整文字
+        记载的历法。
+        发明“通其率”，影响中国天文数学2000年。在家
+        乡阆中蟠龙山建立了中国最早的民间观星台。由
+        于落下闳是在历法上确定春节的天文学家，老百
+        姓亲切地称他为“春节老人”。" data-hover-image="../img/人物/落下闳.png" onclick="showContent(this)">
+        <img src="../img/人物/僧一行.png" alt="Image 7" class="circle-image" data-content="僧一行 唐朝|术数之精，事必前知。 粲如垂象，变告无疑”——《旧唐书・方伎传》
+        张遂（一行），唐朝高僧，制造“黄道游仪”，用
+        来观测日、月、五星的位置和移动情况，在世界
+        上第一次发现恒星位置变化的情况。
+        制造“水运浑天铜仪”——世界上最早的机械自动计
+        时器。
+        是世界上第一个用科学方法实测子午线的科学家。
+        纠正了我国古天文算学著作《周髀算经》关于子午
+        线“王畿千里，影差一寸”的错误计算公式。
+        主持修订历法编撰成《大衍历》，这是世界上当时
+        最先进的历法。" data-hover-image="../img/人物/僧一行.png" onclick="showContent(this)">
+        <img src="../img/人物/王贞仪.png" alt="Image 8" class="circle-image" data-content="王贞仪 清朝|“贞仪通天算之学，能测星象，旁及壬遁，且知医。为诗文
+        皆质实说事理，不为藻采”——《清史稿》
+        王贞仪广涉经史诗文，深入研究天文、地理、数学、
+        医学等科学领域。《自然》杂志将她选入“为科学
+        发展奠定基础的女性科学家”。
+        她的《岁差日至辨疑》一文，对岁差的原理、测定
+        以及推算方法都有准确的论证和简明通俗的说明。
+        撰写的《月食解》一文，精辟地阐述了月食发生、
+        月食和月望以及食分深浅等知识。
+        著有《地圆论》宣传地圆学说，是世界上唯一一个
+        从宇宙宏观与微观结合来理解“天圆地方”这个概念
+        的。" data-hover-image="../img/人物/王贞仪.png" onclick="showContent(this)">
+    </div>
+    <div class="content-container">
+        <div id="content-display">
+            <p>苍穹之上，日月交替，星辰变幻，自古以来便引发人们
+                <br>无尽的遐想。在中国古代，天文历法不仅仅是对天象的
+                <br>观测记录，更是古人理解世界、探索自然规律的智慧结
+                <br>晶。而这背后，离不开那些为天文历法事业奉献一生的
+                <br>伟大人物。他们或于庭院中仰望星空，或在观星台上日
+                <br>夜观测，用自己的双眼捕捉天体的细微变化，用智慧的
+                <br>头脑总结规律。从古老的星表编制到先进历法的诞生，
+                <br>从简陋仪器的改良到复杂机械的发明，他们一步一个脚
+                <br>印，推动着天文历法不断向前发展。此刻，让我们翻开
+                <br>历史的书卷，走近这些熠熠生辉的名字，探寻那段波澜
+                <br>壮阔的天文历法传奇，领略古人探索宇宙的智慧光芒。
+            </p>
+            <h3>请点击左侧图片查看说明。</h3>
+        </div>
+        <img src="../img/人物/班昭.png" alt="Hover Image" class="hover-image" id="hover-image">
+    </div>
+    <script>
+        const images = document.querySelectorAll('.circle-image');
+        const numImages = images.length;
+        const radius = 200;
+        const centerX = 300;
+        const centerY = 200;
+
+        for (let i = 0; i < numImages; i++) {
+            const angle = (2 * Math.PI * i) / numImages;
+            const x = centerX + radius * Math.cos(angle);
+            const y = centerY + radius * Math.sin(angle);
+            images[i].style.left = `${x - 60}px`;
+            images[i].style.top = `${y - 40}px`;
+            images[i].style.zIndex = Math.round(y);
+        }
+
+        function showContent(img) {
+            const content = img.getAttribute('data-content');
+            const [title, body] = content.split('|');
+            const formattedBody = body.replace(/\n/g, '<br>');
+            const display = document.getElementById('content-display');
+            display.innerHTML = `<h3>${title}</h3><p>${formattedBody}</p>`;
+
+            // 更新悬浮图片
+            const hoverImageSrc = img.getAttribute('data-hover-image');
+            const hoverImage = document.getElementById('hover-image');
+            if (hoverImageSrc) {
+                hoverImage.src = hoverImageSrc;
+            }
+        }
+
+        // 鼠标悬停时显示悬浮图片
+        images.forEach((image) => {
+            image.addEventListener('mouseenter', () => {
+                const hoverImageSrc = image.getAttribute('data-hover-image');
+                const hoverImage = document.getElementById('hover-image');
+                if (hoverImageSrc) {
+                    hoverImage.src = hoverImageSrc;
+                    hoverImage.style.opacity = '0.4';
+                    hoverImage.style.right = '20px';
+                }
+            });
+
+            image.addEventListener('mouseleave', () => {
+                const hoverImage = document.getElementById('hover-image');
+                hoverImage.style.opacity = '0';
+                hoverImage.style.right = '-200px';
+            });
+        });
+    </script>
+	
+	<script src="../js/loading.js"></script>
+	<script src="../js/navbar.js"></script>
+</body>
+
+</html>

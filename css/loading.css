@@ -1,0 +1,17 @@
+.loading{
+	position: fixed;
+	left:50%;
+	top:45%;
+	background-color: #A14F4E;
+	width: 40px;
+	height: 40px;
+	transform: scale(50);
+	opacity: 1;
+	border-radius: 50%;
+	z-index: 100000;
+	transition: all 2s;
+}
+
+.loading-out{
+	transform: scale(0.1);
+}

@@ -1,0 +1,65 @@
+body{
+	padding: 0;
+	margin: 0;
+	overflow-x: hidden;
+}
+
+#time-line-container{
+	height: 120vh;
+	margin: auto;
+	overflow-y: scroll;
+	scroll-timeline: --my-scroller y;
+	/* 背景部分 */
+	.bg{
+		z-index: -10;
+		.scrollbg{
+			width: 100vw;
+			height: 100vh;
+		}
+		.scrollbg:nth-child(1){background-color: #111;}
+		.scrollbg:nth-child(2){background-color: #333;}
+		.scrollbg:nth-child(3){background-color: #555;}
+		.scrollbg:nth-child(4){background-color: #777;}
+		.scrollbg:nth-child(5){background-color: #999;}
+	}
+
+	
+	
+}
+
+#time-line-container::-webkit-scrollbar{
+	display: none;
+}
+
+@keyframes time-line-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+	
+/* 时间轴部分 */
+#timeline{
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	display: flex;
+	
+	animation: time-line-scroll 3s linear;
+	animation-timeline: --my-scroller;
+	margin-left:10vw;
+	
+	.card{
+		text-align: center;
+		line-height: 100%;
+		
+		width: 60vw;
+		height: 60vh;
+		background-color: antiquewhite;
+		margin: 20vh 7vw;
+	}
+}
+
+.nocontent{
+	width: 100vw;
+	height: 150vh;
+	background-color: darkblue;
+}

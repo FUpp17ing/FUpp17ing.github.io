@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>典藏·典籍撷英 汗青留痕照古今</title>
+    <link rel="stylesheet" href="../css/书籍.css" />
+    <link rel="stylesheet" href="../css/全局.css" />
+    <link rel="stylesheet" href="../css/导航栏-蓝.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            /* background-image: url('../img/书籍页/书籍页.png'); */
+        }
+
+        /* 轮播图容器样式 */
+        .lunbo-wrap {
+            /* width: 1200px;
+            /* 设置轮播图容器的宽度为1200px */
+            /* height: 500px; */
+            /* 设置轮播图容器的高度为500px */
+            width: 100%;
+            /* 设置轮播图容器的宽度为1200px */
+            height: 100%;
+            position: absolute;
+            /* 使用绝对定位 */
+            top: 50%;
+            /* 将顶部边缘设置为视口高度的42% */
+            left: 50%;
+            /* 将左侧边缘设置为视口宽度的50% */
+            transform: translate(-50%, -50%);
+            /* 使用平移变换使容器居中 */
+            background-image: url('../img/书籍页/书籍页.png');
+            /* 设置背景颜色为浅灰色 */
+            padding: 50px;
+            /* 设置内边距为50px */
+            box-shadow: 0 30px 50px #dbdbdb;
+            /* 添加阴影效果 */
+        }
+
+        /* 轮播图滑块样式 */
+        #slide {
+            width: max-content;
+            /* 设置滑块的宽度为最大内容宽度 */
+        }
+
+        /* 每个轮播项的通用样式 */
+        .item {
+            width: 200px;
+            /* 设置每个轮播项的宽度为200px */
+            height: 300px;
+            /* 设置每个轮播项的高度为300px */
+            background-position: 50%, 50%;
+            /* 设置背景图片的位置 */
+            display: inline-block;
+            /* 使每个轮播项显示为行内块级元素 */
+            background-size: cover;
+            /* 使背景图片覆盖整个轮播项 */
+            position: absolute;
+            /* 使用绝对定位 */
+            top: 60%;
+            /* 设置顶部距离为60% */
+            transform: translateY(-50%);
+            /* 使用平移变换使轮播项垂直居中 */
+            border-radius: 20px;
+            /* 设置圆角半径 */
+            box-shadow: 0 30px 50px #505050;
+            /* 添加阴影效果 */
+            transition: 0.5s;
+            /* 设置过渡效果持续时间为0.5秒 */
+        }
+
+        /* 第一个和第二个轮播项的特殊样式 */
+        .item:nth-child(1),
+        .item:nth-child(2) {
+            top: 0;
+            /* 设置顶部距离为0 */
+            left: 0;
+            /* 设置左侧距离为0 */
+            width: 100%;
+            /* 设置宽度为100% */
+            height: 100%;
+            /* 设置高度为100% */
+            transform: translateY(0);
+            /* 取消垂直居中 */
+            border-radius: 0;
+            /* 取消圆角 */
+            box-shadow: none;
+            /* 取消阴影 */
+        }
+
+        /* 第三个轮播项的特殊位置 */
+        .item:nth-child(3) {
+            left: 65%;
+            /* 设置左侧距离为65% */
+        }
+
+        /* 第四个轮播项的特殊位置 */
+        .item:nth-child(4) {
+            left: calc(65% + 220px);
+            /* 计算左侧距离 */
+        }
+
+        /* 第五个轮播项的特殊位置 */
+        .item:nth-child(5) {
+            left: calc(65% + 440px);
+            /* 计算左侧距离 */
+        }
+
+        /* 第六个轮播项的特殊位置 */
+        .item:nth-child(6) {
+            left: calc(65% + 660px);
+            /* 计算左侧距离 */
+            opacity: 0;
+            /* 设置透明度为0 */
+        }
+
+        .item:nth-child(7) {
+            left: calc(65% + 660px);
+            /* 计算左侧距离 */
+            opacity: 0;
+            /* 设置透明度为0 */
+        }
+
+        .item:nth-child(8) {
+            left: calc(65% + 660px);
+            /* 计算左侧距离 */
+            opacity: 0;
+            /* 设置透明度为0 */
+        }
+
+        /* 轮播项中的内容样式 */
+        .item .content {
+            width: 300px;
+            /* 设置内容宽度 */
+            position: absolute;
+            /* 使用绝对定位 */
+            left: 100px;
+            /* 设置左侧距离 */
+            top: 60%;
+            /* 设置顶部距离 */
+            transform: translateY(-50%);
+            /* 使用平移变换使内容垂直居中 */
+            font-family: system-ui;
+            /* 设置字体 */
+            color: black;
+            /* 设置字体颜色 */
+            display: none;
+            /* 默认隐藏内容 */
+        }
+
+        /* 第二个轮播项的内容默认显示 */
+        .item:nth-child(2) .content {
+            display: block;
+            /* 显示内容 */
+        }
+
+        /* 轮播项中的名称样式 */
+        .item .name {
+            font-size: 40px;
+            /* 设置字体大小 */
+            /* font-weight: 400; */
+            opacity: 0;
+            /* 初始透明度为0 */
+            animation: showcontent 1s ease-in-out 1 forwards;
+            /* 定义动画效果 */
+        }
+
+        /* 轮播项中的描述样式 */
+        .item .des {
+            margin: 30px 0;
+            /* 设置上下外边距 */
+            opacity: 0;
+            /* 初始透明度为0 */
+            animation: showcontent 1s ease-in-out 0.3s 1 forwards;
+            /* 延迟0.3秒后显示 */
+        }
+
+        /* 轮播项中的按钮样式 */
+        .item button {
+            padding: 10px 20px;
+            /* 设置内边距 */
+            border: none;
+            /* 取消边框 */
+            opacity: 0;
+            /* 初始透明度为0 */
+            animation: showcontent 1s ease-in-out 0.6s 1 forwards;
+            /* 延迟0.6秒后显示 */
+        }
+
+        /* 定义动画效果，这里主要是对于图片上文字部分的动画 */
+        @keyframes showcontent {
+            from {
+                opacity: 0;
+                /* 初始透明度为0 */
+                transform: translateY(100px);
+                /* 向下移动100px */
+                filter: blur(20px);
+                /* 初始模糊效果 */
+            }
+
+            to {
+                opacity: 1;
+                /* 最终透明度为1 */
+                transform: translateY(0);
+                /* 不再移动 */
+                filter: blur(0);
+                /* 取消模糊效果 */
+            }
+        }
+
+        /* 控制按钮容器样式 */
+        .buttons {
+            width: 100%;
+            /* 设置宽度为100% */
+            position: absolute;
+            /* 使用绝对定位 */
+            bottom: 50px;
+            /* 设置底部距离 */
+            margin-left: -50px;
+            /* 设置左侧外边距 */
+            text-align: center;
+            /* 文本居中 */
+            border: none;
+            /* 取消边框 */
+        }
+
+        /* 单个控制按钮样式 */
+        .s_button {
+            display: inline-block;
+            /* 行内块级元素 */
+            border: none;
+            /* 取消边框 */
+            width: 50px;
+            /* 设置宽度 */
+            height: 50px;
+            /* 设置高度 */
+            line-height: 50px;
+            /* 设置行高 */
+            text-align: center;
+            /* 文本居中 */
+            color: gray;
+            /* 设置字体颜色 */
+            font-size: 25px;
+            /* 设置字体大小 */
+            border-radius: 50%;
+            /* 设置圆形 */
+            font-weight: bold;
+            /* 设置字体加粗 */
+            border: 1px solid #555;
+            /* 设置边框 */
+            margin: 0 25px;
+            /* 设置外边距 */
+            transition: 0.5s;
+            /* 设置过渡效果 */
+        }
+
+        /* 鼠标悬停时的控制按钮样式 */
+        .s_button:hover {
+            cursor: pointer;
+            /* 更改鼠标指针 */
+            background-color: #ccc;
+            /* 设置背景颜色 */
+        }
+
+        .h6 {
+            align-items: center;
+        }
+
+        /* 新增样式：h4 和 h6 居中并使用隶书字体 */
+        h4,
+        h6 {
+            text-align: center;
+            font-family: "隶书", serif;
+        }
+
+        /* 新增样式：p 标签使用宋体字体，调整行间距和段间距 */
+        p {
+            font-family: "方正楷体", serif;
+            font-size: 20px;
+            line-height: 1.6;
+            font-weight: 600;
+            /* 行间距 */
+            margin-bottom: 15px;
+            /* 段间距 */
+        }
+    </style>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <!-- 跳转动画 -->
+    <div class="loading"></div>
+
+    <!-- 顶部感应区域，用于控制导航栏自动隐藏 -->
+    <div class="top-trigger"></div>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">天玑谱</div>
+        <ul class="nav-links">
+            <li><a onclick="loading.in('../pages/首页.html')">首页</a></li>
+            <li><a onclick="loading.in('../算法/算法.html')">算筹</a></li>
+            <li><a onclick="loading.in('../pages/工具页.html')">观象</a></li>
+            <li><a onclick="loading.in('../pages/人物.html')">问道</a></li>
+            <li><a onclick="loading.in('../pages/书籍.html')">典藏</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="lunbo-wrap">
+            <div id="slide">
+                <div class="item" style="background-image: url('../img/书籍页/书籍11.png');">
+                    <div class="content">
+                        <div class="name">
+                            <h4>《大衍历》</h4>
+                            <h6>唐朝 僧一行</h6>
+                        </div>
+                        <div class="des">
+                            <p>
+                                为了制定历法，一行测各地纬度，南至交州，北尽铁勒，
+                                并步九服日晷，定各地见食分数，复测见恒星移动，十五
+                                年而历成。
+                                于公元724年，一行主持了我国历史上第一次规模宏大的
+                                天文大地测量，使我国在子午线长度的实际测定上走在了
+                                世界的前例。
+                                《大衍历》的成就主要是正确掌握了太阳周年视运动的规律，
+                                纠正了过去历法中把全年平分为二十四节气的错误。
+                        </div>
+                    </div>
+                </div>
+                <div class="item" style="background-image: url('../img/书籍页/书籍22.png');">
+                    <div class="content">
+                        <div class="name">
+                            <h4>《夏小正》</h4>
+                            <h6>夏朝</h6>
+                        </div>
+                        <div class="des">
+                            <p>
+                                《夏小正》是中国现存最早的历书，相传为夏代所创。
+                                《夏小正》把一年分为12个月，对每个月的物候、气象、天文、
+                                农事、田猎以及相关的农事活动都有比较具体的记载。
+                                《夏小正》中所记载的历法是与农业生产的季节变化密切相关
+                                的，为农民安排各个季节的农事提供了重要依据，所以人们就
+                                把夏历也叫做“农历”（俗称阴历），现在我们每年过的春节，
+                                就是夏历年的第一天。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item" style="background-image: url('../img/书籍页/书籍33.png');">
+                    <div class="content">
+                        <div class="name">
+                            <h4>《甘石星经》</h4>
+                            <h6>战国 甘德、石申</h6>
+                        </div>
+                        <div class="des">
+                            <p>
+                                甘德著有《天文星占》八卷，石申著有《天文》八卷，
+                                后人把这两部著作结合起来，称为《甘石星经》，是
+                                现存世界上最早的天文学著作。
+                                书里记录了八百颗恒星的名字，其中一百二十一颗恒星
+                                的位置已被测定，是世界最早的恒星表，数据被后世天
+                                文学家所用。还记录了木、火、土、金、水等五大行星
+                                的运行情况，并指出了它们出没的规律。
+                        </div>
+                    </div>
+                </div>
+                <div class="item" style="background-image: url('../img/书籍页/书籍44.png');">
+                    <div class="content">
+                        <div class="name">
+                            <h4>《尚书・尧典》</h4>
+                            <h6>上古时期</h6>
+                        </div>
+                        <div class="des">
+                            <p>
+                                “乃命羲和，钦若昊天，历象日月星辰，敬授民时。”
+                                早期的人们通过观察天象来进行时间的测定和季节的
+                                划分，制定历法以指导农业生产和人们的生活，这一时期
+                                被称为“观象授时”时期。
+                                在帝尧时期已经有了专职的天文官，从事观象授时。随后
+                                历朝都有专司天象观测的机构，如钦天监等。
+                                《尚书·尧典》还提到 “期三百有六旬有六日，以闰月定四
+                                时，成岁”，说明当时已认识到一年约为 366 天，并采用
+                                置闰月的方法来调整四季和岁时。
+                        </div>
+                    </div>
+                </div>
+                <div class="item" style="background-image: url('../img/书籍页/书籍55.png');">
+                    <div class="content">
+                        <div class="name">
+                            <h4>《太初历》</h4>
+                            <h6>汉朝 落下闳</h6>
+                        </div>
+                        <div class="des">
+                            <p>
+                                汉武帝太初元年实行《太初历》，它是由西汉时期的民
+                                间天文学家落下闳创制的。
+                                它是自有科学历法以来，第一部资料完整的传世历法，也是
+                                当时世界上最先进的历法。
+                                它规定以正月为岁首，并第一次把中国独创的二十四节气编
+                                入历法，首次计算了日月交食的发生周期，并规定了“落下闳
+                                置闰法”，使历法更加符合季节变化和农业生产的需要。
+                        </div>
+                    </div>
+                </div>
+                <div class="item" style="background-image: url('../img/书籍页/书籍66.png');">
+                    <div class="content">
+                        <div class="name">
+                            <h4>《大明历》</h4>
+                            <h6>南北朝 祖冲之</h6>
+                        </div>
+                        <div class="des">
+                            <p>
+                                汉武帝太初元年实行《太初历》，它是由西汉时期的民
+                                也称“甲子元历”，于刘宋大明七年（463年）颁布。
+                                南朝时期的天文家虞喜在世界天文学史上首次发现“岁差”
+                                现象，祖冲之将岁差首次应用于历法的修订，在天文学中
+                                “回归年”和“恒星年”2个概念被区分开来。
+                                这部历法推算出的历年长度与近代天文学计算出的“回归年
+                                ”长度仅差46秒。
+                                还采用了391年中设置144个闰月的新闰周，比古历的19年
+                                7闰更为精密。
+                        </div>
+                    </div>
+                </div>
+                <div class="item" style="background-image: url('../img/书籍页/书籍77.png');">
+                    <div class="content">
+                        <div class="name">
+                            <h4>《周髀算经》</h4>
+                            <!-- <h6>南北朝 祖冲之</h6> -->
+                        </div>
+                        <div class="des">
+                            <p>
+                                《周髀算经》原名《周髀》，周就是圆，髀就是股。
+                                该书是中国最古老的天文算法的著作之一，唐初将其列为《算经十书》的第一种。
+                                该书包含算学、历法、天文测量和宇宙论等多方面内容，利用圭表原理，观测晷影极游，运用勾股术推测日月行度，确定一年的日期和季节的早晚，以及太阳的远近大小和宇宙的构造。主要阐明当时的盖天说和四分历法。
+                        </div>
+                    </div>
+                </div>
+                <div class="item" style="background-image: url('../img/书籍页/书籍88.png');">
+                    <div class="content">
+                        <div class="name">
+                            <h4>《授时历》</h4>
+                            <h6>元朝 郭守敬 王恂 等</h6>
+                        </div>
+                        <div class="des">
+                            <p>
+                                《授时历》取“敬授民时”之意，对农业指导生产大有帮助。
+                                《授时历》经过推算确认南宋杨忠辅制定的《统天历》所用回归年长365.2425日最为精密的，与今天世界通用的公历即格里高利历基本相同，但早了三百年。
+                                废除了古代的上元积年、日法、并取消了用分数表示天文数据的千年旧习，以实测数据为基础，运用了弧矢割圆术等数学方法进行天文计算，大大提高了历法的精度。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons">
+                <div class="s_button">&lt;</div>
+                <div class="s_button">&gt;</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $.getJSON('js/lunboJsonUp.json', function (data) {
+                console.log("data:", data)
+                const $slide = $('#slide');
+                // 渲染轮播图
+                data.forEach(item => {
+                    const $item = $('<div class="item"></div>')
+                        .css('background-image', `url(${item.image})`)
+                        .append(
+                            $('<div class="content"></div>').append(
+                                $('<div class="name"></div>').text(item.photoName),
+                                $('<div class="des"></div>').text(item.text),
+                            )
+                        );
+                    $slide.append($item);
+                });
+            });
+            //下一张：将所有带有 .item 类的第一个元素移动到 #slide 容器的末尾。
+            document.querySelectorAll('.s_button')[1].onclick = () => {
+                let lists = document.querySelectorAll('.item');
+                document.querySelector('#slide').appendChild(lists[0]);
+            }
+            //上一张：将所有带有 .item 类的最后一个元素移动到 #slide 容器的开头
+            document.querySelectorAll('.s_button')[0].onclick = () => {
+                let lists = document.querySelectorAll('.item');
+                document.querySelector('#slide').prepend(lists[lists.length - 1]);
+            }
+        })
+    </script>
+    <script src='../js/loading.js'></script>
+    <script src='../js/navbar.js'></script>
+</body>
+
+</html>

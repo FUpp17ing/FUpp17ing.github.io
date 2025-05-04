@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>观象·天工开物 圭表浑仪载乾坤</title>
+	<link rel="stylesheet" href="../css/工具页.css" />
+	<link rel="stylesheet" href="../css/全局.css" />
+	<link href="../layui/css/layui.css" rel="stylesheet">
+	<link rel="stylesheet" href="../css/导航栏-白.css" />
+</head>
+
+<body>
+	<!-- 跳转动画 -->
+	<div class="loading"></div>
+
+	<!-- 顶部感应区域，用于控制导航栏自动隐藏 -->
+	<div class="top-trigger"></div>
+	<!-- 导航栏 -->
+	<nav class="navbar">
+		<div class="logo">天玑谱</div>
+		<ul class="nav-links">
+			<li><a onclick="loading.in('../pages/首页.html')">首页</a></li>
+			<li><a onclick="loading.in('../算法/算法.html')">算筹</a></li>
+			<li><a onclick="loading.in('../pages/工具页.html')">观象</a></li>
+			<li><a onclick="loading.in('../pages/人物.html')">问道</a></li>
+			<li><a onclick="loading.in('../pages/书籍.html')">典藏</a></li>
+		</ul>
+	</nav>
+
+	<!-- ================== 八卦图与青铜器  ================== -->
+	<div class="chap container-window">
+		<div class="rotater" id="rotater">
+			<img src="../img/工具页插画/八卦图.png" alt="八卦图" class="main-image" id="mainImage">
+
+			<!-- 八个青铜器卡片 -->
+			<div class="card" data-angle="0" data-title="赤道经纬仪"
+				data-desc='
+			<p>赤道经纬仪由子午圈、赤道圈、赤经圈等组成, 主要用来侦测太阳时和天体的赤经、赤纬。</p>
+			<p>整个观测部分由三个大环和一根轴承组成, 最外面的大环叫做"子午环”, 中间的圆环呈南高北低，与天赤道平行，叫做"赤道环”; 在赤道环面的中心垂直地竖立着一根轴承，叫做"极轴”，里面的圆环叫做“赤经环"，可以绕极轴旋转。</p>'>
+				<img src="../img/天文仪器/赤道经纬仪.png" alt="赤道经纬仪.png"">
+		    </div>
+		    <div class=" card" data-angle="45" data-title="地平经纬仪" data-desc="
+			<p>地平经纬仪，用来测定天体（或目标）的地平经度、地平纬度。</p>
+			<p>地平经纬仪合并地平经仪和象限仪的构造与作用于一体，是北京古观象台唯一采用西方文艺复兴时期法国式艺术装饰的天文仪器。</p>
+			<p>主要部件有地平圈、象限环、窥衡和內架等，以青铜铸造工艺完成，在测天的同时还具有象天的功能，设计时既考虑到科学的观测，亦重视艺术的表现，内外兼顾，藏礼于器。</p>">
+				<img src="../img/天文仪器/地平经纬仪.png" alt="地平经纬仪">
+			</div>
+			<div class="card" data-angle="90" data-title="地平经仪"
+				data-desc="
+			<p>地平经仪是我国古代天文观测仪器，主要用于测量天体的地平方位角。</p>
+			<p>此仪主体是地平圈，圈内设有东西通径，中间为圆盘，用云柱支撑。其底座为副十字交梁，上有三条苍龙和一铜柱托起直径两米多的地平圈，圈面按东西南北划分，正南正北为零度，东西刻度。正东正西各竖一柱，升龙盘柱而上，合拢处两龙捧火球，火球与立表相连，立表可旋转，观测时读取刻度盘上天体的方位角。</p>">
+				<img src="../img/天文仪器/地平经仪.png" alt="地平经仪">
+			</div>
+			<div class="card" data-angle="135" data-title="黄道经纬仪"
+				data-desc="<p>黄道经纬仪由子午圈、子午圈、黄道圈、黄道经圈等组成，主要用以测定天体的赤经差、赤纬和真太阳时。</p><p>然而，由于中国历代天文学家对黄道坐标系统的关注有限，导致该仪器在制成后使用频率较低。</p>">
+				<img src="../img/天文仪器/黄道经纬仪.png" alt="黄道经纬仪">
+			</div>
+			<div class="card" data-angle="180" data-title="玑衡抚辰仪"
+				data-desc="<p>玑衡抚辰仪，也叫精密赤道浑仪，主要用以测定天体的赤经差、赤纬和真太阳时。</p><p>仪器由子午双圈、赤道经圈和游旋赤道圈、双层赤经圈三部分组成。</p><p>玑衡抚辰仪的用法虽和赤道经纬仪相似，但不同的是它多了一个可以转动的游旋赤道圈，这样在测星的赤道坐标之时，可以直接从上面直接读出此星的赤道经度，测量起来误差小,方便。</p>">
+				<img src="../img/天文仪器/玑衡抚辰仪.png" alt="玑衡抚辰仪">
+			</div>
+			<div class="card" data-angle="225" data-title="纪限仪"
+				data-desc="<p>纪限仪又称距度仪、六分仪或距度仪，是中国古代用于测量60度角以内的任意两天体的角距离的天文仪器。</p><p>由弧系统、枢轴系统、窥衡系统组成，制作起来相当困难。北京古观象台的这架纪限仪，是中国第一台在观象台上使用的纪限仪，丰富了中国古代天文观测的内容。</p><p>这件仪器的刻划也比古观象台上的其它仪器精细，精度可达6角秒。</p>">
+				<img src="../img/天文仪器/纪限仪.png" alt="青铜器六">
+			</div>
+			<div class="card" data-angle="270" data-title="天体仪"
+				data-desc='<p>天体仪用途有60多项，但它主要用于黄道、赤道和地平三个坐标系统的相互换算以及演示日、月、星辰在天球上的视位置等。</p><p>中国传统天文仪器中有一类专用于演示浑天宇宙和日月星辰东升西落的装置，通称浑象，汉代张衡制造的浑天仪就是最早的浑象。清康熙年间新制六仪中的这台浑象称"天体仪"，因其重要的象征作用，被誉为"诸仪之统"</p>'>
+				<img src="../img/天文仪器/天体仪.png" alt="青铜器七">
+			</div>
+			<div class="card" data-angle="315" data-title="象限仪"
+				data-desc="<p>象限仪，主要用于测定天体在地平上的或天顶距。主要由象限环、数轴、竖轴、横轴、窥横等组成。</p><p>象限仪早在古希腊就已为人所用，后来被引入伊斯兰世界，那里对于象限仪的首次记载可追溯至九世纪早期。</p><p>天文学家通常利用象限仪测量太阳和行星的子午线高度，进而确定纬度、黄道倾斜角和观测地点的恒星坐标。</p>">
+				<img src="../img/天文仪器/象限仪.png" alt="青铜器八">
+			</div>
+		</div>
+
+		<!-- 描述文本框 -->
+		<div class="description" id="description"></div>
+
+		<!-- 仪器名字 -->
+		<div id="divice-title">天文仪器</div>
+		<div id="divice-title-sub">请点击仪器图片以查看详情</div>
+
+		<!-- 缩放控制按钮 -->
+		<button class="zoom-control" id="zoomControl">返回原始状态</button>
+	</div>
+	<!-- ================== 云散开动画 ======================= -->
+	<div class="scoll-anim">
+		<div class="sun"><img src="../img/工具页插画/太阳.png" alt="" /></div>
+		<div class="birds">
+			<img class="bird" src="../img/工具页插画/鹤1.png" alt="" />
+			<img class="bird" src="../img/工具页插画/鹤2.png" alt="" />
+			<img class="bird" src="../img/工具页插画/鹤3.png" alt="" />
+			<img class="bird" src="../img/工具页插画/鹤4.png" alt="" />
+			<img class="bird" src="../img/工具页插画/鹤5.png" alt="" />
+			<img class="bird" src="../img/工具页插画/鹤6.png" alt="" />
+		</div>
+		<div class="clouds">
+			<img class="cloud" src="../img/工具页插画/云1.png" alt="" />
+			<img class="cloud" src="../img/工具页插画/云2.png" alt="" />
+			<img class="cloud" src="../img/工具页插画/云3.png" alt="" />
+			<img class="cloud" src="../img/工具页插画/云4.png" alt="" />
+		</div>
+		<!-- 动画监测点 -->
+		<div class="anim-trigger"></div>
+	</div>
+	<!-- =================== 立杆测量与勾股术 ========================= -->
+	<div class="chap part-shadow">
+		<div class="left">
+			<div class="title">立杆测量与勾股术</div>
+			<div class="shadow-container">
+				<div class="pic" id="winter-pic">
+					<img src="../img/工具页插画/冬至插画.jpg" alt="" />
+				</div>
+				<div class="text">
+					<div class="text1">“若求邪至日者，以日下为勾，日高为股，勾股各自乘，并而开方除之，得邪至日”——《周髀算经》</div>
+					<div class="text2">
+						如果要求出从观测点到太阳的斜线距离，就把太阳在地面的垂直投影点到观测点的距离作为勾，把太阳的高度作为股，将勾和股分别平方后相加，再对其和进行开方运算，得到的结果就是从观测点到太阳的斜线距离。这段话生动地展现了古代天文测量中立杆测影与勾股术的紧密结合。
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="right">
+			<p>请选择下图中影子最长的一天：</p>
+			<div class="pics">
+				<img class="shadow-pics" src="../img/工具页插画/影子1.png" alt="" />
+				<img class="shadow-pics" src="../img/工具页插画/影子2.png" alt="" />
+				<img class="shadow-pics" src="../img/工具页插画/影子3.png" alt="" />
+				<img class="shadow-pics" id="longest-shadow" src="../img/工具页插画/影子4.png" alt="" />
+			</div>
+			<p id="shadow-right-tip">恭喜你选对了！</p>
+		</div>
+	</div>
+
+	<!-- ===================== 立杆测量与勾股术 - 补充 =================================  -->
+	<div class="chap part-shadow-sub">
+		<div class="title">方法介绍</div>
+		<div class="container">
+			<div class="part">
+				<div class="sub-title">立杆测影法</div>
+				<div class="info">
+					<p>立杆测影法，就是垂直于地面立一根杆，通过观察记录它正午时影子的长短变化来确定季节的变化。</p>
+					<p>圭表介绍：圭表，是度量日影长度的一种天文仪器，由“圭”和“表”两个部件组成。垂直于地面的直杆叫“表”，水平放置于地面上刻有刻度以测量影长的标尺叫“圭”。早在公元前20世纪，陶寺遗址时期，我国中原地区已使用圭表测影法。
+				</div>
+				<img src="../img/工具页插画/立杆测影.png" alt="" />
+			</div>
+			<div class="part">
+				<div class="sub-title">勾股术</div>
+				<div class="info">
+					<p>勾股术基于勾股定理，即直角三角形两条直角边（勾和股）的平方和等于斜边（弦）的平方。在天文测量中，将立杆测影所形成的几何关系与勾股定理相结合。</p>
+					<br>
+					<p>刘徽在《九章算术注》序言中，言及周代运用勾股定理立杆测影：“以南戴日下及日去地为勾、股，为之求弦，即日去人也。以径寸之筒南望日，日满筒空，则定筒之长短以为股率，以筒径为勾率，日去人之数为大股，大股之勾即日径也。虽夫圆穹之象犹曰可度，又况泰山之高与江海之广哉。”
+					</p>
+					<p>这段论述，是勾股定理在古代中国用于立杆测影的佐证之一。当测量出日影长度（勾）和已知表杆长度（股）后，利用勾股定理，就可以计算出从观测点到太阳在天空中位置的斜线距离（弦）。此外，古人还会利用相似三角形的原理，通过在不同地点同时测量表杆影长，结合两地之间的距离，来推算太阳的高度角等参数，进而更加精确地了解太阳的位置和运行轨迹。
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- =====================  割圆术 =========================== -->
+	<div class="chap geyuanshu">
+		<div class="container"><img src="../img/割圆招差术/长图图解.png" alt="" /></div>
+		<p>此图可以滚动，请滚动查看后续部分</p>
+		<div class="info">
+			<div class="title">弧矢割圆术</div>
+			弧矢割圆术是元代郭守敬在编制《授时历》时发明的一种用于计算天体位置和运动的数学方法，主要是利用圆内的弧、矢、弦等几何关系，通过三鱼函数的原理来进行天文计算，从而提高历法中对天体运行位置和时间的计算精度。用干黄道坐标与赤道坐标的换算，类似球面三角公式。
+		</div>
+	</div>
+
+	<!-- =============== 招差术与调日法 =========================== -->
+	<div class="chap zhaochashu">
+		<div class="left">
+			<div class="title">招差术</div>
+			<div class="intruduction">
+				<p>招差术是一种高阶差分插值方法，本质上是对内插法的进一步发展和推广，即高次内插法。</p>
+				<p>经过汉代、隋代、唐代对一次二次内插法的研究，元代天文学家王恂、郭守敬在所编制的《授时历》中，为精确推算日月五星运行的速度和位置，根据“平、定、立”三差，创用三次差内插公式。</p>
+				<p>元代朱世杰对于这类插值问题作了更深入的研究。他在《四元玉鉴》中成功地把高阶等差级数方面的研究成果运用于内插法，得到了一般的插值公式，并且明确指出公式中各项系数恰好是p=
+					1，2，3，…时的三角垛求和公式。上述插值公式，在中国数学史上一般称为“招差术”，其用途并不仅仅限于内插法，能处理更复杂的曲线（比如行星顺行+逆行），用于天体轨迹拟合。</p>
+			</div>
+			<img src="../img/工具页插画/招差术插画2.png" alt="" />
+		</div>
+		<div class="right">
+			<img src="../img/工具页插画/招差术插画1.png" alt="" />
+			<div class="carousel">
+				<div class="layui-carousel" id="ID-carousel-demo-set" lay-filter="filter-demo-carousel-set">
+					<div carousel-item>
+						<div><img src="../img/割圆招差术/图片1.png" alt="" /></div>
+						<div><img src="../img/割圆招差术/图片2.png" alt="" /></div>
+						<div><img src="../img/割圆招差术/图片3.png" alt="" /></div>
+						<div><img src="../img/割圆招差术/图片4.png" alt="" /></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="diaorifa">
+		<div class="left">
+			<img src="../img/工具页插画/调日法插画.png" alt="" />
+		</div>
+		<div class="right">
+			<div class="title">调日法</div>
+			<div class="intruduction">
+				<p>调日法是一种南北朝数学家何承天发明的系统地寻找精确分数以表示天文数据或数学常数的内插法。用于确定历法中分数形式的天文数据，可以程序化寻求精确分数来表示数值。</p>
+				<p>调日法通过调整分数，避免了分子分母过大带来的计算困难，可以简化了天文数据计算，还能够以较高的精度逼近实际天文观测值，体现了古代数学家的智慧和创造力。</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- 结语 -->
+	<div class="chap end">
+		<div class="scroll-container">
+			<div class="left"><img src="../img/工具页插画/卷轴外.png" alt="" /></div>
+			<div class="right"><img src="../img/工具页插画/卷轴外.png" alt="" /></div>
+			<div class="aboutus">
+				<div class="initial-text">关于我们</div>
+				<div class="expanded-content">
+					<span style="font-size: 40px;">武汉大学新闻与传播学院</span><br>
+					美工：麦芷晴<br>
+					文字：党彦芝<br>
+					网站制作：尤杨洋 曾情<br>
+					指导老师：董庆兴
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../layui/layui.js"></script>
+	<script src="../js/loading.js"></script>
+	<script>
+
+		// ========================= 八卦图与青铜器 ============================
+		document.addEventListener('DOMContentLoaded', function () {
+			const rotater = document.getElementById('rotater');
+			const cards = document.querySelectorAll('.card');
+			const mainImage = document.getElementById('mainImage');
+			const description = document.getElementById('description');
+			const zoomControl = document.getElementById('zoomControl'); const divice_title = document.getElementById('divice-title');
+			const divice_title_sub = document.getElementById('divice-title-sub');
+
+
+			const radius = 200; // 卡片距离中心的半径
+			let isZoomed = false;
+			let activeCard = null;
+
+			// 初始化卡片位置
+			function positionCards() {
+				cards.forEach(card => {
+					const angle = parseFloat(card.dataset.angle) * Math.PI / 180;
+					const x = Math.sin(angle) * radius;
+					const y = -Math.cos(angle) * radius;
+
+					card.style.left = `calc(50% + ${x}px - 100px)`;
+					card.style.top = `calc(50% + ${y}px - 120px)`;
+					card.style.transform = `rotate(${card.dataset.angle}deg)`
+				});
+			}
+
+			// 激活卡片
+			function activateCard(card) {
+				// 移除之前激活的卡片
+				if (activeCard) {
+					activeCard.classList.remove('active');
+				}
+
+				// 设置新激活的卡片
+				activeCard = card;
+				card.classList.add('active');
+
+				// 更新描述
+				description.style.opacity = 1;
+				description.innerHTML = card.dataset.desc;
+				description.style.display = 'block';
+				divice_title.textContent = card.dataset.title;
+
+				//计算角度
+				const angle = parseFloat(card.dataset.angle);
+
+				// 如果是缩放状态，旋转容器使当前卡片位于正上方
+				if (isZoomed) {
+					const rotation = -angle;
+					rotater.style.transform = `rotate(${rotation}deg)`;
+				}
+			}
+
+			// 切换缩放状态
+			function toggleZoom() {
+				isZoomed = !isZoomed;
+				// 进入缩放状态
+				if (isZoomed) {
+					rotater.classList.add('zoomed');
+					zoomControl.style.display = 'block';
+					divice_title_sub.textContent = '请点击下方按钮返回原始状态'
+					// 如果没有激活的卡片，默认激活第一个
+					if (!activeCard) {
+						activateCard(cards[0]);
+					}
+				} else {
+					// 退出缩放状态
+					rotater.classList.remove('zoomed');
+					zoomControl.style.display = 'none';
+					description.style.display = 'none';
+					rotater.style.transform = 'rotate(0deg)';
+					divice_title_sub.textContent = '请点击仪器图片以查看详情';
+					divice_title.textContent = '天文仪器';
+				}
+			}
+
+			// 初始化
+			positionCards();
+
+			// 卡片点击事件
+			cards.forEach(card => {
+				card.addEventListener('click', function () {
+					if (!isZoomed) {
+						toggleZoom();
+					}
+					activateCard(this);
+				});
+			});
+
+			// 缩放控制按钮事件
+			zoomControl.addEventListener('click', toggleZoom);
+
+			// 响应式调整
+			window.addEventListener('resize', positionCards);
+		});
+
+		// =========================== 滚动动画 ============================
+		const triggerPoint = document.querySelector('.anim-trigger');
+		const animationContainer = document.querySelector('.scoll-anim');
+		let animationPlayed = false;
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting && !animationPlayed) {
+					console.log("动画播放")
+					animationPlayed = true;
+					animationContainer.classList.add('animation-active');
+				}
+			});
+		}, { threshold: 0.1 });
+
+		observer.observe(triggerPoint);
+
+
+		// ========================= 影子 ===========================
+		const shadow_pics = document.querySelectorAll('.shadow-pics');
+		let activeShadowPicture = null;
+
+		// 激活卡片
+		function activePicture(pic) {
+			const winter_pic = document.getElementById("winter-pic");
+			const right_tip = document.getElementById("shadow-right-tip");
+
+			if (pic.classList.contains('active')) {
+				pic.classList.remove('active');
+				winter_pic.style.opacity = 0;
+				right_tip.style.opacity = 0;
+				return
+			}
+
+			// 移除之前激活的卡片
+			if (activeShadowPicture) {
+				activeShadowPicture.classList.remove('active');
+			}
+
+			// 设置新激活的卡片
+			activeShadowPicture = pic;
+			pic.classList.add('active');
+
+			if (pic.id == "longest-shadow") {
+				winter_pic.style.opacity = 1;
+				right_tip.style.opacity = 1;
+				right_tip.textContent = "恭喜你选对了！"
+			}
+			else {
+				winter_pic.style.opacity = 0;
+				right_tip.style.opacity = 1;
+				right_tip.textContent = "不对哦，这不是影子最长的一天。"
+			}
+		}
+
+		// 卡片点击事件
+		shadow_pics.forEach(card => {
+			card.addEventListener('click', function () {
+				activePicture(this);
+			});
+		});
+
+		// ========================= 招差术与调日法 ==========================
+		layui.use(function () {
+			var carousel = layui.carousel;
+			var carInst = carousel.render({
+				elem: '#ID-carousel-demo-set',
+				width: '600px',
+				height: '600px'
+			});
+		});
+
+	</script>
+	<script src="../js/navbar.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>滚动时间轴demo</title>
+		<!-- 色卡 -->
+		<!-- #9f492d #026399 #e6e2cf #151614 -->
+		<link rel="stylesheet" href="./css/timeline.css" />
+	</head>
+	<body>
+		<div class="nocontent">
+		</div>
+		<div id="time-line-container">
+			<div id="timeline">
+				<div class="card">1</div>
+				<div class="card">2</div>
+				<div class="card">3</div>
+				<div class="card">4</div>
+				<div class="card">5</div>
+			</div>
+			<!-- 建议背景元素比timeline多一个 -->
+			<div class="bg">
+				<div class="scrollbg">1</div>
+				<div class="scrollbg">2</div>
+				<div class="scrollbg">3</div>
+				<div class="scrollbg">4</div>
+				<div class="scrollbg">5</div>
+				<div class="scrollbg">6</div>
+			</div>
+		</div>
+		
+		<div class="nocontent"></div>
+		
+	</body>
+</html>
+<script src="./js/jquery-3.7.1.min.js"></script>
+<script>
+	$('#timeline').css('top', $('#time-line-container').position().top )
+	
+</script>

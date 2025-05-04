@@ -1,0 +1,72 @@
+body{
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	user-select: none;
+}
+
+#container{
+	background-color: #026399;
+	width: 100vw;
+	height: 100vh;
+	display: flex;	
+	justify-content: center;
+	align-items: center;
+}
+	
+#rotate{
+	transform-origin: center;
+	position: fixed;
+	bottom:-80vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* transition: all 0.5s; */
+	transform: ;
+	.steel{
+		img{
+			height: 120vh;
+			pointer-events: none;
+		}
+	}
+	.card{
+		width: 200px;
+		height: 200px;
+		background-color: antiquewhite;
+		overflow: hidden;
+		transition: all 0.5s;
+		
+		/* 旋转相关 */
+		position: absolute;
+		top:-40vh;
+		/* top值+img的一半高度60 */
+		transform-origin: 50% 100vh;
+		
+		opacity: 0.7;
+		
+	}
+	.card:hover{
+		opacity: 1;
+	}
+	/* 旋转角度控制，表示第一个元素 */
+	.card:nth-of-type(1){transform: rotate(-135deg);}
+	.card:nth-of-type(2){transform: rotate(-90deg);}
+	.card:nth-of-type(3){transform: rotate(-45deg);}
+	.card:nth-of-type(4){transform: rotate(0deg);}
+	.card:nth-of-type(5){transform: rotate(45deg);}
+	.card:nth-of-type(6){transform: rotate(90deg);}
+	
+	/* 选中时 */
+	.active{
+		background-color: red;
+		opacity: 1;
+		scale: 1.1;
+	}
+}
+
+.pageButton{
+	position: absolute;
+	border: white solid;
+}
+
+#leftButton
