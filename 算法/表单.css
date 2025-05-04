@@ -382,3 +382,9 @@ input[type="submit"]:hover {
 #description p {
     line-height: 1.6;
 }
+
+#tyinputForm{
+	input{
+		margin: 0;
+	}
+}
